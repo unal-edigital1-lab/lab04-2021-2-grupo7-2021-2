@@ -42,8 +42,17 @@ Si queremos colocar una tabla, hacemos lo siguiente:
 |:------:|:---------:|:---------:|:---------:|:---------:|
 |   a    |     b     |     c     |     d     |     e     |
 
-***NOTA:*** *Esto se construye más sencillo con la ayuda de <https://www.tablesgenerator.com/markdown_tables>.*
+***NOTA:*** *Esto se construye más sencillo con la ayuda de <https://www.tablesgenerator.com/markdown_tables>.*  
 ***NOTA:*** *Al igual que con las imágenes, es necesario dejar un enter antes y después para evitar errores.*
+
+Para poner un punto aparte toca poner 2 espacios antes de dar enter para que markdown no pegue los renglones como si fuese un punto seguido. Ejemplo:  
+Sin los 2 espacios.
+Pasa esto.
+
+Con los 2 espacios.  
+Pasa esto.
+
+Para poner un nuevo párrafo (Salto de línea), damos 2 veces enter.
 
 ### Implementación:
 Momento Delwin :v
