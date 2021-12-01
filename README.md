@@ -26,13 +26,13 @@ endmodule
 ```
 Para meter imágenes locales (Guardamos la imagen en la carpeta src del repositorio antes de), las citamos así:
 
-![Título que se muestra si la imagen no carga (Título que se muestra al poner el cursor encima de la imagen)](/hdl/src/nombre_de_la_imagen.jpg)
+![Título que se muestra si la imagen no carga](/hdl/src/nombre_de_la_imagen.jpg "Título que se muestra al poner el cursor encima de la imagen")
 
 ***NOTA:*** *Es impotante dejar el enter antes y despues de cada imagen para que no se den problemas al subirlo a github.*
 
 Si se trata de una imagen de internet, la citamos así:
 
-![Titulo que se muestra si la imagen no carga (Título que se muestra al poner el cursor encima de la imagen)](https://raw.githubusercontent.com/Fabeltranm/SPARTAN6-ATMEGA-MAX5864/master/lab/lab02-sumador4b/doc/sum4b.jpg)
+![Titulo que se muestra si la imagen no carga](https://raw.githubusercontent.com/Fabeltranm/SPARTAN6-ATMEGA-MAX5864/master/lab/lab02-sumador4b/doc/sum4b.jpg "Título que se muestra al poner el cursor encima de la imagen")
 Si queremos poner una nota al pie, ponemos así [^Nota2].
 [^Nota2]: Luego así para que esto aparezca al final del documento como la nota en cuestión.
 
