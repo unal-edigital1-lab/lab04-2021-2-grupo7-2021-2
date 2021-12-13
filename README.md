@@ -1,15 +1,15 @@
 # Laboratorio 04: Diseño de banco de Registro
 
 ### Autores
-Deimy Xiomara Murcia Chavarría
-Delwin José Padilla Padilla
-Diego Alejandro Sánchez Mendoza
+- Deimy Xiomara Murcia Chavarría
+- Delwin José Padilla Padilla
+- Diego Alejandro Sánchez Mendoza
 
 ### Palabras Clave:
-Te me cuidas
+Banco de registro, Memoria, Flip flops
 
 ### Objetivo:
-Ajá
+El presente laboratorio buscar crear un banco de registro en el cual se puedan leer y escribir registro de 4 bits; el ingreso de la informacion se realizara por medio de interruptores y este debe ser capaz de permitir la lectura de 2 registros simultaneamente y tambien permitir la escritura de registros acorde a la señal de control.
 
 ### Marco Teórico:
 Mucho texto
