@@ -107,7 +107,7 @@ always @(posedge enable) begin
           endcase
         default:
           case (count)
-            2'h0: begin bcd <= num1[3:0];   an<=4'b1110; end
+            2'h0: begin bcd <= num2[3:0];   an<=4'b1110; end
             2'h1: begin bcd <= 4'b0000;   an<=4'b1101; end
           endcase
       endcase
