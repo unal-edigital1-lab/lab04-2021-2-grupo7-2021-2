@@ -67,3 +67,34 @@ set_global_assignment -name EDA_TEST_BENCH_NAME Lab4_TB -section_id eda_simulati
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Lab4_TB
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Lab4_TB -section_id Lab4_TB
 set_global_assignment -name EDA_TEST_BENCH_FILE ../src/Lab4_TB.v -section_id Lab4_TB
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_23 -to clk
+set_location_assignment PIN_86 -to rst
+set_location_assignment PIN_65 -to datW[3]
+set_location_assignment PIN_66 -to datW[2]
+set_location_assignment PIN_67 -to datW[1]
+set_location_assignment PIN_68 -to datW[0]
+set_location_assignment PIN_59 -to addrW[2]
+set_location_assignment PIN_60 -to addrW[1]
+set_location_assignment PIN_64 -to addrW[0]
+set_location_assignment PIN_44 -to addrB[2]
+set_location_assignment PIN_49 -to addrB[1]
+set_location_assignment PIN_52 -to addrB[0]
+set_location_assignment PIN_34 -to addrA[2]
+set_location_assignment PIN_39 -to addrA[1]
+set_location_assignment PIN_42 -to addrA[0]
+set_location_assignment PIN_136 -to An[3]
+set_location_assignment PIN_135 -to An[2]
+set_location_assignment PIN_127 -to SSeg[0]
+set_location_assignment PIN_126 -to SSeg[1]
+set_location_assignment PIN_125 -to SSeg[2]
+set_location_assignment PIN_124 -to SSeg[3]
+set_location_assignment PIN_121 -to SSeg[4]
+set_location_assignment PIN_119 -to SSeg[6]
+set_location_assignment PIN_120 -to SSeg[5]
+set_location_assignment PIN_129 -to An[1]
+set_location_assignment PIN_128 -to An[0]
+set_location_assignment PIN_58 -to RegWrite
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

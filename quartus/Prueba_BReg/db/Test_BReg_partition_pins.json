@@ -36,15 +36,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "addrRa[1]",
-					"strict" : false
-				},
-				{
 					"name" : "addrRa[0]",
 					"strict" : false
 				},
 				{
-					"name" : "addrRa[3]",
+					"name" : "addrRa[1]",
 					"strict" : false
 				},
 				{
@@ -52,15 +48,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "addrRb[1]",
-					"strict" : false
-				},
-				{
 					"name" : "addrRb[0]",
 					"strict" : false
 				},
 				{
-					"name" : "addrRb[3]",
+					"name" : "addrRb[1]",
 					"strict" : false
 				},
 				{
@@ -72,11 +64,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "clk",
+					"name" : "rst",
 					"strict" : false
 				},
 				{
-					"name" : "RegWrite",
+					"name" : "clk",
 					"strict" : false
 				},
 				{
@@ -92,7 +84,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "addrW[3]",
+					"name" : "RegWrite",
 					"strict" : false
 				},
 				{

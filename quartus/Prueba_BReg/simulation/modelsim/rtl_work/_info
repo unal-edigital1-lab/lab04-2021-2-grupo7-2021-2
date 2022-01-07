@@ -10,39 +10,39 @@ z2
 cModel Technology
 Z0 dC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/simulation/modelsim
 vBancoRegistro
-!s110 1641392855
+!s110 1641512871
 !i10b 1
-!s100 =S4XG_4cDQOKIkMagBCBf3
+!s100 H2Tg4ZTPj03>dN:NEfRle3
 Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IG@3Nc3]F^mhH92FbmYFD<0
+I^aa_8ki7TcYo;PC`Oc?hg1
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1641388493
+w1641512581
 8C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v
 FC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v
 !i122 0
-L0 21 45
+L0 21 50
 Z3 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1641392855.000000
+Z4 !s108 1641512871.000000
 !s107 C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src|C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v|
 !i113 1
-Z4 o-vlog01compat -work work
+Z5 o-vlog01compat -work work
 !s92 -vlog01compat -work work +incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src
-Z5 tCvgOpt 0
+Z6 tCvgOpt 0
 n@banco@registro
 vTestBench
-!s110 1641392856
+!s110 1641512872
 !i10b 1
-!s100 _3[najXBEeVgEh_o@WAEa0
+!s100 `dX<hckARPlbUYz]Z?d:W2
 R1
-I5TA6`PMfKNFK@iRE=m`E>2
+I`K6BJzn8FaMS1OYjNWRzJ1
 R2
 R0
-w1641392838
+w1641512855
 8C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/../../src/TestBench.v
 FC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/../../src/TestBench.v
 !i122 1
@@ -51,11 +51,11 @@ R3
 r1
 !s85 0
 31
-!s108 1641392856.000000
+R4
 !s107 C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/../../src/TestBench.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/../../src|C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/../../src/TestBench.v|
 !i113 1
-R4
-!s92 -vlog01compat -work work +incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/../../src
 R5
+!s92 -vlog01compat -work work +incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/../../src
+R6
 n@test@bench

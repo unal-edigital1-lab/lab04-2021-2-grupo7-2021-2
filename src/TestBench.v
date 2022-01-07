@@ -25,9 +25,9 @@
 module TestBench;
 
 	// Inputs
-	reg [7:0] addrRa;
-	reg [7:0] addrRb;
-	reg [8:0] addrW;
+	reg [2:0] addrRa;
+	reg [2:0] addrRb;
+	reg [2:0] addrW;
 	reg [3:0] datW;
 	reg RegWrite;
 	reg clk;
@@ -38,7 +38,7 @@ module TestBench;
 	wire [3:0] datOutRb;
 
   //Contador para la lectura (De 8 bits por el tamaño de addrRa y addrRb)
-	reg [7:0] i;
+	reg [2:0] i;
 
 	// Instantiate the Unit Under Test (UUT)
 	BancoRegistro uut (
@@ -64,14 +64,14 @@ module TestBench;
 		rst = 0;
 
 		//Carga algunos datos sucesivos
-		for (addrW = 0; addrW < 16; addrW = addrW +1) begin
+		for (addrW = 0; addrW < 8; addrW = addrW +1) begin
 			#2 datW = datW + 1;
 		end
-		#1 RegWrite = 0; //Habilita la lectura
+		#2 RegWrite = 0; //Habilita la lectura
 		//Lee los primeros 16 registros (en paralelo)
-		for (i = 0; i < 8; i = i + 1) begin
+		for (i = 0; i < 4; i = i + 1) begin
 			addrRa = i; //Lee del Reg_0 al Reg_7
-			addrRb = i + 8; //Lee del Reg_7 al Reg_15
+			addrRb = i + 4; //Lee del Reg_7 al Reg_15
 			#2 $display("El Valor de Registro %d = %d  y %d = %d", addrRa, datOutRa, addrRb, datOutRb);
     end
 	end

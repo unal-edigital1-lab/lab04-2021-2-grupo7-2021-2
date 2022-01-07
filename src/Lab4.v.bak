@@ -1,0 +1,34 @@
+module Lab4 (addrA, addrB, addrW, datW, regWrite, clk, rst, SSeg, An);
+//Inputs y Outputs
+input [2:0] addrA;
+input [2:0] addrB;
+input [2:0] addrW;
+input[3:0] datW;
+input regWrite;
+input clk;
+input rst;
+output [0:6] SSeg;
+output [3:0] An;
+
+wire [3:0] datA;
+wire [3:0] datB;
+
+BancoRegistro #(3,4) registro (
+  .addrRa(addrA),
+  .addrRb(addrB),
+  .addrW(addrW),
+  .datW(datW),
+  .RegWrite(regWrite),
+  .clk(clk),
+  .rst(rst),
+  .datOutRa(datA),
+  .datOutRb(datB)); /*Instanciamos un submódulo BancoRegistro y redefinimos sus
+                      parámetros*/
+BCD4bitsWreg visualizacion (.num1(datA),
+.num2(datB),
+.clk(clk),
+.sseg(SSeg),
+.an(An),
+.rst(rst)); //Instanciamos un submódulo BCD4bitsWreg para hacer la visualización
+
+endmodule

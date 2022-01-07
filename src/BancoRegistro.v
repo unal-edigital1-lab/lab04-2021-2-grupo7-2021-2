@@ -19,8 +19,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module BancoRegistro #(      		 //   #( Parametros
-         parameter BIT_ADDR = 8,  //   BIT_ADDR Número de bits para la dirección
-         parameter BIT_DATO = 4  //  BIT_DATO  Número de bits para el dato
+         parameter BIT_ADDR = 3,  // BIT_ADDR Número de bits para la dirección (Default: 8)
+         parameter BIT_DATO = 4  // BIT_DATO  Número de bits para el dato
 	)
 	(
     input [BIT_ADDR-1:0] addrRa, //Recibe la dirección para leer el dato A
@@ -31,7 +31,7 @@ module BancoRegistro #(      		 //   #( Parametros
     output [BIT_DATO-1:0] datOutRb, /*Entrega el dato A, guardado en la posición
                                       addrRb*/
 
-	  input [BIT_ADDR:0] addrW, //Recibe la dirección en la cual cargará el dato
+	  input [BIT_ADDR-1:0] addrW, //Recibe la dirección en la cual cargará el dato
     input [BIT_DATO-1:0] datW, //Recibe el dato a cargar
 
 	  input RegWrite, //Habilita la carga o lectura
@@ -46,8 +46,10 @@ localparam NREG = 2 ** BIT_ADDR; /*Es decir, 2^BIT_ADDR. Esto es así porque por
                                    diferentes*/
 
 //Configuración del banco de registro
-reg [BIT_DATO-1: 0] breg [NREG-1:0]; /*Crea NREG registros en total, cada uno de
+reg [BIT_DATO-1:0] breg [NREG-1:0]; /*Crea NREG registros en total, cada uno de
                                        BIT_DATO bits*/
+
+reg [BIT_DATO-1:0] cont = 0; //Contador para el reset (descomentar para probar)
 
 assign  datOutRa = breg [addrRa]; /*Envía el dato guardado en addrRa a la salida
                                    datOutRa*/
@@ -55,11 +57,13 @@ assign  datOutRb = breg [addrRb]; /*Envía el dato guardado en addrRb a la salid
                                    datOutRb*/
 
 always @(posedge clk) begin
-	if (RegWrite == 1) /*Si vale 1, carga el dato en la posición indicada y si
-                       vale 0, lee el dato guardado en la posición indicada*/
+  if (rst == 0) begin
+    for (cont = 0; cont < NREG; cont = cont + 1) begin
+      breg [cont] <= 0; //Ver por qué en simulación esto no sirve o el TB se enloquece :/
+    end
+  end else if (RegWrite == 1) /*Si vale 1, carga el dato en la posición indicada y si
+                         vale 0, lee el dato guardado en la posición indicada*/
      breg [addrW] <= datW;
-  end
-
-
+end
 
 endmodule

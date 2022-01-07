@@ -1,23 +1,24 @@
-module Lab4 ( //Preguntarle al profe si los param se definen acá o son los de BancoRegistro.v y "edfinirlos" se refiere a re-definirlos en la instanciacion
-input addrA [3:0],
-input addrB [3:0],
-input addrW [3:0],
-input datW [3:0],
-input regWrite,
-input clk,
-input rst,
-output SSeg [6:0],
-output An [3:0]
-);
+module Lab4 (addrA, addrB, addrW, datW, RegWrite, clk, rst, SSeg, An);
+//Inputs y Outputs
+input [2:0] addrA;
+input [2:0] addrB;
+input [2:0] addrW;
+input[3:0] datW;
+input RegWrite;
+input clk;
+input rst;
+output [0:6] SSeg;
+output [3:0] An;
 
-wire datA [3:0];
-wire datB [3:0];
+wire [3:0] datA;
+wire [3:0] datB;
 
-BancoRegistro #(8,4) registro (
+BancoRegistro #(3,4) registro (
   .addrRa(addrA),
   .addrRb(addrB),
-  .addrW(addrW), .datW(datW),
-  .RegWrite(regWrite),
+  .addrW(addrW),
+  .datW(datW),
+  .RegWrite(RegWrite),
   .clk(clk),
   .rst(rst),
   .datOutRa(datA),
