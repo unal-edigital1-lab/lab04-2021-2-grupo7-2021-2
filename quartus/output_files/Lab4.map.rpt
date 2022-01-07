@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab4
-Thu Jan 06 21:18:27 2022
+Fri Jan 07 17:57:01 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -15,11 +15,12 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Registers Removed During Synthesis
   9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: BancoRegistro:registro
- 12. Post-Synthesis Netlist Statistics for Top Partition
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: BancoRegistro:registro
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -46,13 +47,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jan 06 21:18:27 2022       ;
+; Analysis & Synthesis Status        ; Successful - Fri Jan 07 17:57:01 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; Lab4                                        ;
 ; Top-level Entity Name              ; Lab4                                        ;
 ; Family                             ; Cyclone IV E                                ;
 ; Total logic elements               ; 133                                         ;
-;     Total combinational functions  ; 105                                         ;
+;     Total combinational functions  ; 121                                         ;
 ;     Dedicated logic registers      ; 59                                          ;
 ; Total registers                    ; 59                                          ;
 ; Total pins                         ; 27                                          ;
@@ -167,16 +168,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                       ; Library ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------+---------+
-; ../src/Lab4.v                    ; yes             ; User Verilog HDL File  ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v          ;         ;
-; ../src/BCDtoSSeg.v               ; yes             ; User Verilog HDL File  ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCDtoSSeg.v     ;         ;
-; ../src/BCD4bitsWreg.v            ; yes             ; User Verilog HDL File  ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v  ;         ;
-; ../src/BancoRegistro.v           ; yes             ; User Verilog HDL File  ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v ;         ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                    ;
++-------------------------------------------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                                          ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                       ; Library ;
++-------------------------------------------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------+---------+
+; ../src/Lab4.v                                                                             ; yes             ; User Verilog HDL File        ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v          ;         ;
+; ../src/BCDtoSSeg.v                                                                        ; yes             ; User Verilog HDL File        ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCDtoSSeg.v     ;         ;
+; ../src/BCD4bitsWreg.v                                                                     ; yes             ; User Verilog HDL File        ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v  ;         ;
+; ../src/BancoRegistro.v                                                                    ; yes             ; User Verilog HDL File        ; C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v ;         ;
+; /datos/unal/materias/2021-2/electronica_digital_i/lab04-2021-2-grupo7-2021-2/src/reg8.mem ; yes             ; Auto-Found Unspecified File  ; /datos/unal/materias/2021-2/electronica_digital_i/lab04-2021-2-grupo7-2021-2/src/reg8.mem          ;         ;
++-------------------------------------------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -186,14 +188,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Estimated Total logic elements              ; 133       ;
 ;                                             ;           ;
-; Total combinational functions               ; 105       ;
+; Total combinational functions               ; 121       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 59        ;
-;     -- 3 input functions                    ; 9         ;
-;     -- <=2 input functions                  ; 37        ;
+;     -- 4 input functions                    ; 60        ;
+;     -- 3 input functions                    ; 12        ;
+;     -- <=2 input functions                  ; 49        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 89        ;
+;     -- normal mode                          ; 105       ;
 ;     -- arithmetic mode                      ; 16        ;
 ;                                             ;           ;
 ; Total registers                             ; 59        ;
@@ -206,8 +208,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 49        ;
-; Total fan-out                               ; 547       ;
-; Average fan-out                             ; 2.51      ;
+; Total fan-out                               ; 571       ;
+; Average fan-out                             ; 2.44      ;
 +---------------------------------------------+-----------+
 
 
@@ -216,10 +218,10 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                  ; Entity Name   ; Library Name ;
 +---------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------+---------------+--------------+
-; |Lab4                           ; 105 (0)             ; 59 (0)                    ; 0           ; 0            ; 0       ; 0         ; 27   ; 0            ; |Lab4                                                ; Lab4          ; work         ;
+; |Lab4                           ; 121 (0)             ; 59 (0)                    ; 0           ; 0            ; 0       ; 0         ; 27   ; 0            ; |Lab4                                                ; Lab4          ; work         ;
 ;    |BCD4bitsWreg:visualizacion| ; 47 (40)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab4|BCD4bitsWreg:visualizacion                     ; BCD4bitsWreg  ; work         ;
 ;       |BCDtoSSeg:bcdtosseg|     ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab4|BCD4bitsWreg:visualizacion|BCDtoSSeg:bcdtosseg ; BCDtoSSeg     ; work         ;
-;    |BancoRegistro:registro|     ; 58 (58)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab4|BancoRegistro:registro                         ; BancoRegistro ; work         ;
+;    |BancoRegistro:registro|     ; 74 (74)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab4|BancoRegistro:registro                         ; BancoRegistro ; work         ;
 +---------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -240,13 +242,42 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 59    ;
-; Number of registers using Synchronous Clear  ; 18    ;
+; Number of registers using Synchronous Clear  ; 21    ;
 ; Number of registers using Synchronous Load   ; 1     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 36    ;
+; Number of registers using Clock Enable       ; 32    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; BancoRegistro:registro|breg[2][3]       ; 2       ;
+; BancoRegistro:registro|breg[1][3]       ; 2       ;
+; BancoRegistro:registro|breg[0][3]       ; 2       ;
+; BancoRegistro:registro|breg[3][3]       ; 2       ;
+; BancoRegistro:registro|breg[5][2]       ; 2       ;
+; BancoRegistro:registro|breg[4][2]       ; 2       ;
+; BancoRegistro:registro|breg[1][2]       ; 2       ;
+; BancoRegistro:registro|breg[0][2]       ; 2       ;
+; BancoRegistro:registro|breg[6][1]       ; 2       ;
+; BancoRegistro:registro|breg[4][1]       ; 2       ;
+; BancoRegistro:registro|breg[2][1]       ; 2       ;
+; BancoRegistro:registro|breg[0][1]       ; 2       ;
+; BancoRegistro:registro|breg[5][0]       ; 2       ;
+; BancoRegistro:registro|breg[6][0]       ; 2       ;
+; BancoRegistro:registro|breg[4][0]       ; 2       ;
+; BancoRegistro:registro|breg[7][0]       ; 3       ;
+; BancoRegistro:registro|breg[2][0]       ; 2       ;
+; BancoRegistro:registro|breg[1][0]       ; 2       ;
+; BancoRegistro:registro|breg[0][0]       ; 2       ;
+; BancoRegistro:registro|breg[3][0]       ; 2       ;
+; Total number of inverted registers = 20 ;         ;
++-----------------------------------------+---------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -255,14 +286,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Lab4|BCD4bitsWreg:visualizacion|an[2]  ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[0][3] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[1][3] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[2][2] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[3][2] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[4][2] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[5][2] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[6][2] ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[7][2] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[3][2] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[5][3] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[6][3] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[7][3] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[0][1] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[1][2] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[2][1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[3][3] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[4][1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[5][2] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Lab4|BancoRegistro:registro|breg[6][1] ;
 ; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Lab4|BancoRegistro:registro|Mux3       ;
 ; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Lab4|BancoRegistro:registro|Mux4       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
@@ -286,21 +320,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 27                          ;
 ; cycloneiii_ff         ; 59                          ;
-;     ENA               ; 36                          ;
-;     SCLR              ; 18                          ;
+;     ENA               ; 32                          ;
+;     SCLR              ; 21                          ;
 ;     SLD               ; 1                           ;
-;     plain             ; 4                           ;
-; cycloneiii_lcell_comb ; 106                         ;
+;     plain             ; 5                           ;
+; cycloneiii_lcell_comb ; 122                         ;
 ;     arith             ; 16                          ;
 ;         2 data inputs ; 16                          ;
-;     normal            ; 90                          ;
-;         1 data inputs ; 2                           ;
+;     normal            ; 106                         ;
+;         1 data inputs ; 14                          ;
 ;         2 data inputs ; 20                          ;
-;         3 data inputs ; 9                           ;
-;         4 data inputs ; 59                          ;
+;         3 data inputs ; 12                          ;
+;         4 data inputs ; 60                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.06                        ;
+; Average LUT depth     ; 3.02                        ;
 +-----------------------+-----------------------------+
 
 
@@ -309,7 +343,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -319,7 +353,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Jan 06 21:18:13 2022
+    Info: Processing started: Fri Jan 07 17:56:49 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab4 -c Lab4
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -333,7 +367,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file /datos/
     Info (12023): Found entity 1: BancoRegistro File: C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v Line: 21
 Info (12127): Elaborating entity "Lab4" for the top level hierarchy
 Info (12128): Elaborating entity "BancoRegistro" for hierarchy "BancoRegistro:registro" File: C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v Line: 25
-Warning (10230): Verilog HDL assignment warning at BancoRegistro.v(61): truncated value with size 32 to match size of target (4) File: C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v Line: 61
+Warning (10230): Verilog HDL assignment warning at BancoRegistro.v(65): truncated value with size 32 to match size of target (4) File: C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v Line: 65
 Info (12128): Elaborating entity "BCD4bitsWreg" for hierarchy "BCD4bitsWreg:visualizacion" File: C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v Line: 32
 Warning (10230): Verilog HDL assignment warning at BCD4bitsWreg.v(28): truncated value with size 32 to match size of target (27) File: C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v Line: 28
 Warning (10230): Verilog HDL assignment warning at BCD4bitsWreg.v(38): truncated value with size 32 to match size of target (2) File: C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v Line: 38
@@ -348,8 +382,8 @@ Info (21057): Implemented 165 device resources after synthesis - the final resou
     Info (21061): Implemented 138 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 4797 megabytes
-    Info: Processing ended: Thu Jan 06 21:18:27 2022
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:33
+    Info: Processing ended: Fri Jan 07 17:57:01 2022
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:29
 
 

@@ -36,6 +36,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "addrRa[4]",
+					"strict" : false
+				},
+				{
+					"name" : "addrRa[5]",
+					"strict" : false
+				},
+				{
 					"name" : "addrRa[0]",
 					"strict" : false
 				},
@@ -45,6 +53,26 @@
 				},
 				{
 					"name" : "addrRa[2]",
+					"strict" : false
+				},
+				{
+					"name" : "addrRa[3]",
+					"strict" : false
+				},
+				{
+					"name" : "addrRa[7]",
+					"strict" : false
+				},
+				{
+					"name" : "addrRa[6]",
+					"strict" : false
+				},
+				{
+					"name" : "addrRb[4]",
+					"strict" : false
+				},
+				{
+					"name" : "addrRb[5]",
 					"strict" : false
 				},
 				{
@@ -60,11 +88,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "datW[0]",
+					"name" : "addrRb[3]",
 					"strict" : false
 				},
 				{
-					"name" : "rst",
+					"name" : "addrRb[7]",
+					"strict" : false
+				},
+				{
+					"name" : "addrRb[6]",
+					"strict" : false
+				},
+				{
+					"name" : "datW[0]",
 					"strict" : false
 				},
 				{
@@ -84,7 +120,31 @@
 					"strict" : false
 				},
 				{
+					"name" : "addrW[3]",
+					"strict" : false
+				},
+				{
+					"name" : "addrW[4]",
+					"strict" : false
+				},
+				{
+					"name" : "addrW[5]",
+					"strict" : false
+				},
+				{
+					"name" : "addrW[6]",
+					"strict" : false
+				},
+				{
+					"name" : "addrW[7]",
+					"strict" : false
+				},
+				{
 					"name" : "RegWrite",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
 					"strict" : false
 				},
 				{

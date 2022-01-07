@@ -100,6 +100,6 @@ module TestBench;
 	always #1 clk = ~clk;
 	initial begin: TEST_CASE
 		$dumpfile("TestBench.vcd");
-		#(45) $stop;
+		#(47) $stop;
  	end
 endmodule

@@ -57,13 +57,12 @@ assign datOutRb = breg [addrRb]; /*Envía el dato guardado en addrRb a la salida
                                    datOutRb*/
 
 initial begin
-  $readmemh("Reg8.mem", breg); //Carga los números impares HEX del archivo Reg8
+$readmemh("Reg8.mem", breg); //Carga los números impares HEX del archivo Reg16
 end
 
 always @(posedge clk) begin
   if (rst == 0) begin
     for (cont = 0; cont < NREG; cont = cont + 1) begin
-    //NOTA:Poner el numero de registros en vez de NREG para probar solo el banco
       breg [cont] <= 0;
     end
   end else if (RegWrite == 1) /*Si vale 1, carga el dato en la posición indicada

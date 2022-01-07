@@ -1,5 +1,5 @@
 Timing Analyzer report for Test_BReg
-Thu Jan 06 19:41:55 2022
+Fri Jan 07 17:56:19 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -92,12 +92,12 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 8           ;
 ;                            ;             ;
-; Average used               ; 1.03        ;
+; Average used               ; 1.48        ;
 ; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.4%      ;
+;     Processors 2-8         ;   6.9%      ;
 +----------------------------+-------------+
 
 
@@ -151,7 +151,7 @@ No paths to report.
 +-------+--------+----------------------------------+
 ; Clock ; Slack  ; End Point TNS                    ;
 +-------+--------+----------------------------------+
-; clk   ; -3.000 ; -50.584                          ;
+; clk   ; -3.000 ; -1525.688                        ;
 +-------+--------+----------------------------------+
 
 
@@ -196,7 +196,7 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk   ; -3.000 ; -50.584                         ;
+; clk   ; -3.000 ; -1525.688                       ;
 +-------+--------+---------------------------------+
 
 
@@ -235,7 +235,7 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk   ; -3.000 ; -37.080                         ;
+; clk   ; -3.000 ; -1093.887                       ;
 +-------+--------+---------------------------------+
 
 
@@ -252,8 +252,8 @@ No synchronizer chains to report.
 +------------------+-------+------+----------+---------+---------------------+
 ; Worst-case Slack ; N/A   ; N/A  ; N/A      ; N/A     ; -3.000              ;
 ;  clk             ; N/A   ; N/A  ; N/A      ; N/A     ; -3.000              ;
-; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; -50.584             ;
-;  clk             ; N/A   ; N/A  ; N/A      ; N/A     ; -50.584             ;
+; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; -1525.688           ;
+;  clk             ; N/A   ; N/A  ; N/A      ; N/A     ; -1525.688           ;
 +------------------+-------+------+----------+---------+---------------------+
 
 
@@ -280,19 +280,34 @@ No synchronizer chains to report.
 +-------------------------+--------------+-----------------+-----------------+
 ; Pin                     ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
 +-------------------------+--------------+-----------------+-----------------+
+; addrRa[4]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRa[5]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrRa[0]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrRa[1]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrRa[2]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRa[3]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRa[7]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRa[6]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRb[4]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRb[5]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrRb[0]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrRb[1]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrRb[2]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRb[3]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRb[7]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrRb[6]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; datW[0]                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; rst                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; clk                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrW[0]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrW[1]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; addrW[2]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrW[3]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrW[4]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrW[5]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrW[6]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; addrW[7]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; RegWrite                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; rst                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; datW[1]                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; datW[2]                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; datW[3]                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
@@ -374,18 +389,18 @@ No dedicated SERDES Transmitter circuitry present in device or used in design
 No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
 
 
-+------------------------------------------------+
-; Unconstrained Paths Summary                    ;
-+---------------------------------+-------+------+
-; Property                        ; Setup ; Hold ;
-+---------------------------------+-------+------+
-; Illegal Clocks                  ; 0     ; 0    ;
-; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 15    ; 15   ;
-; Unconstrained Input Port Paths  ; 216   ; 216  ;
-; Unconstrained Output Ports      ; 8     ; 8    ;
-; Unconstrained Output Port Paths ; 88    ; 88   ;
-+---------------------------------+-------+------+
++-------------------------------------------------+
+; Unconstrained Paths Summary                     ;
++---------------------------------+-------+-------+
+; Property                        ; Setup ; Hold  ;
++---------------------------------+-------+-------+
+; Illegal Clocks                  ; 0     ; 0     ;
+; Unconstrained Clocks            ; 0     ; 0     ;
+; Unconstrained Input Ports       ; 30    ; 30    ;
+; Unconstrained Input Port Paths  ; 11328 ; 11328 ;
+; Unconstrained Output Ports      ; 8     ; 8     ;
+; Unconstrained Output Port Paths ; 2112  ; 2112  ;
++---------------------------------+-------+-------+
 
 
 +-------------------------------------+
@@ -406,12 +421,27 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; addrRa[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRa[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRa[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[6]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[7]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRb[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRb[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRb[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[6]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[7]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrW[0]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrW[1]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrW[2]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[4]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[5]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[6]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[7]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; datW[0]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; datW[1]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; datW[2]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -445,12 +475,27 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; addrRa[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRa[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRa[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[6]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRa[7]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRb[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRb[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrRb[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[6]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrRb[7]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrW[0]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrW[1]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; addrW[2]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[4]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[5]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[6]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; addrW[7]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; datW[0]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; datW[1]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; datW[2]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -481,7 +526,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Jan 06 19:41:52 2022
+    Info: Processing started: Fri Jan 07 17:56:15 2022
 Info: Command: quartus_sta Test_BReg -c Test_BReg
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -506,7 +551,7 @@ Critical Warning (332148): Timing requirements not met
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -50.584 clk 
+    Info (332119):    -3.000           -1525.688 clk 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
@@ -521,7 +566,7 @@ Critical Warning (332148): Timing requirements not met
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -50.584 clk 
+    Info (332119):    -3.000           -1525.688 clk 
 Info: Analyzing Fast 1200mV 0C Model
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332140): No Setup paths to report
@@ -533,13 +578,13 @@ Critical Warning (332148): Timing requirements not met
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -37.080 clk 
+    Info (332119):    -3.000           -1093.887 clk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4798 megabytes
-    Info: Processing ended: Thu Jan 06 19:41:55 2022
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 4813 megabytes
+    Info: Processing ended: Fri Jan 07 17:56:19 2022
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 
