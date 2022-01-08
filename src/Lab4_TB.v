@@ -29,8 +29,7 @@ module Lab4_TB;
 		clk = 0;
 		rst = 0;
 
-		// Wait 100 ns for global reset to finish //(Y esto)//
-		#100;
+		//(Y esto)
       for (addrRa = 0; addrRa < 8; addrRa = addrRa + 1) begin
 			#5 addrRb=addrRa+8;
 			 $display("el valor de registro %d =  %d y %d = %d", addrRa,datOutRa,addrRb,datOutRb) ;

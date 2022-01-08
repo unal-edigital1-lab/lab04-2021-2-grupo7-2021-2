@@ -5,8 +5,7 @@ module BCD4bitsWreg(
     input clk,
     output [0:6] sseg,
     output reg [3:0] an,
-	 input rst/*,
-	 output led*/
+	  input rst
     );
 
 reg [3:0]bcd=0;
@@ -20,7 +19,6 @@ wire enable;
 // Divisor de frecuecia
 
 assign enable = cfreq[16];
-//assign led =enable;
 always @(posedge clk) begin
   if(rst==0) begin
 		cfreq <= 0;
