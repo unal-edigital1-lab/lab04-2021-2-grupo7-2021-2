@@ -6,7 +6,7 @@
 - Diego Alejandro Sánchez Mendoza
 
 ### Palabras Clave:
-Banco de registro, Memoria, Flip flops
+Banco de registro, Flip flops, Lógica secuencial, Memoria, Visualización dinámica
 
 ### Objetivo:
 El presente laboratorio buscar crear un banco de registro en el cual se puedan leer y escribir registro de 4 bits; el ingreso de la informacion se realizara por medio de interruptores y este debe ser capaz de permitir la lectura de 2 registros simultaneamente adicionalmente debe permitir la escritura de registros acorde a la señal de control.
