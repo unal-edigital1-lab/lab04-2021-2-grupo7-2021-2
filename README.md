@@ -9,10 +9,33 @@
 Banco de registro, Memoria, Flip flops
 
 ### Objetivo:
-El presente laboratorio buscar crear un banco de registro en el cual se puedan leer y escribir registro de 4 bits; el ingreso de la informacion se realizara por medio de interruptores y este debe ser capaz de permitir la lectura de 2 registros simultaneamente y tambien permitir la escritura de registros acorde a la señal de control.
+El presente laboratorio buscar crear un banco de registro en el cual se puedan leer y escribir registro de 4 bits; el ingreso de la informacion se realizara por medio de interruptores y este debe ser capaz de permitir la lectura de 2 registros simultaneamente adicionalmente debe permitir la escritura de registros acorde a la señal de control.
 
 ### Marco Teórico:
-Mucho texto
+- Banco de registros: Esta formado por un numero n de registros que pueden ser capaces de ser seleccionados mediante una señal de control para ser leidos o escritos. Por lo generar el banco de registro tiene un puerto de salida de datos y uno de entrada.
+
+- Display 7 segmentos: Son dispositivos electrónicos de visualización, los cuales se componen de varios segmentos que se encienden y apagan según los niveles de voltaje que reciban en cada uno de sus pines para dar la apariencia del glifo deseado. Los segmentos generalmente son LED individuales o cristales líquidos.
+
+![Display 7 Segmentos](http://www.micropic.es/mpblog/wp-content/uploads/2007/07/7seg_pinouts.png "Display 7 Segmentos")
+
+- Flip - Flops: son dispositivos biestables **(2 estados)**, que sirven como memoria básica para las operaciones de logica secuencial. Estos son ampliamente usados para el almacenamiento y transferencia de datos digitales  se usan normalmente en unidades llamadas “registros” , para el almacenamiento de datos numéricos binarios, estos son los tipos de flip - flops mas utilizados:
+    * Flip-Flop tipo S/R: Mantiene el dato hasta que ocurre un reset, se representan de la siguiente manera:
+
+      ![Flip-Flop tipo S/R](/img/flip_flop_S_R.png  "Flip-Flop tipo S/R")
+
+    * Flip-Flop tipo J/K: A diferencia del flip flop RS, en el caso de activarse ambas entradas a la vez, la salida adquiere el estado contrario al que tenía., se representa de la siguiente manera:
+    
+    ![Flip-Flop tipo J/K](/img/flip_flop_J_K.png  "Flip-Flop tipo J/K")
+
+    * Flip-Flop tipo D: Su función es dejar pasar lo que entra por D, a la salida Q, después de un pulso del reloj.
+
+    ![Flip-Flop tipo D](/img/flip_flop_D.png  "Flip-Flop tipo D")
+
+    
+
+
+
+
 
 ### Desarrollo:
 
