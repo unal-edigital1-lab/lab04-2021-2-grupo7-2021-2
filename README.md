@@ -14,14 +14,10 @@ El presente laboratorio buscar crear un banco de registro en el cual se puedan l
 ### Marco Teórico:
 - Banco de registros: Esta formado por un numero n de registros que pueden ser capaces de ser seleccionados mediante una señal de control para ser leidos o escritos. Por lo generar el banco de registro tiene un puerto de salida de datos y uno de entrada.
 
-- Display 7 segmentos: Son dispositivos electrónicos de visualización, los cuales se componen de varios segmentos que se encienden y apagan según los niveles de voltaje que reciban en cada uno de sus pines para dar la apariencia del glifo deseado. Los segmentos generalmente son LED individuales o cristales líquidos.
-
-![Display 7 Segmentos](http://www.micropic.es/mpblog/wp-content/uploads/2007/07/7seg_pinouts.png "Display 7 Segmentos")
-
-- Flip - Flops: son dispositivos biestables **(2 estados)**, que sirven como memoria básica para las operaciones de logica secuencial. Estos son ampliamente usados para el almacenamiento y transferencia de datos digitales  se usan normalmente en unidades llamadas “registros” , para el almacenamiento de datos numéricos binarios, estos son los tipos de flip - flops mas utilizados:
+- Flip - Flops: Son dispositivos biestables **(2 estados)**, que sirven como memoria básica para las operaciones de logica secuencial. Estos son ampliamente usados para el almacenamiento y transferencia de datos digitales  se usan normalmente en unidades llamadas “registros” , para el almacenamiento de datos numéricos binarios, estos son los tipos de flip - flops mas utilizados:
     * Flip-Flop tipo S/R: Mantiene el dato hasta que ocurre un reset, se representan de la siguiente manera:
 
-      ![Flip-Flop tipo S/R](/img/flip_flop_S_R.png  "Flip-Flop tipo S/R")
+    ![Flip-Flop tipo S/R](/img/flip_flop_S_R.png  "Flip-Flop tipo S/R")
 
     * Flip-Flop tipo J/K: A diferencia del flip flop RS, en el caso de activarse ambas entradas a la vez, la salida adquiere el estado contrario al que tenía., se representa de la siguiente manera:
     
@@ -31,11 +27,15 @@ El presente laboratorio buscar crear un banco de registro en el cual se puedan l
 
     ![Flip-Flop tipo D](/img/flip_flop_D.png  "Flip-Flop tipo D")
 
-    
+- Circuito Secuencial Síncrono: Un circuito secuencial síncrono utiliza señales que modifican su estado solo en instantes discretos de tiempo. La sincronización se logra a través de un dispositivo de sincronización llamado generador de señales de reloj que produce una sucesión periódica de pulsos de reloj. Estos se distribuyen en todo el sistema de tal manera que los elementos de almacenamiento sólo sean afectados a la llegada de cada pulso
 
+- Circuito de memoria: Se dice memoria un circuito en condiciones de mantener una información y hacerla disponible cuando se necesita. Se distinguen dos tipos de memorias: 
+    * La memoria secuencial: Permite leer o escribir mediante la organización de los datos uno tras otro. Para leer un dato es necesario leer todos los almacenados previamente en el mismo orden de almacenamiento; para escribir un dato es necesario escribir después de el último previamente escrito.
+    * La memoria aleatoria o random: Es un tipo de memoria en la que los datos se leen o se escriben datos en la posición deseada, por supuesto que necesitamos una codificación antes del almacenamiento de todas las direcciones de memoria, por lo que los datos se pueden almacenar a la deseada, sin orden secuencia; los datos pueden ser leídos directamente por conocer la dirección donde se almacena.
 
+- Display 7 segmentos: Son dispositivos electrónicos de visualización, los cuales se componen de varios segmentos que se encienden y apagan según los niveles de voltaje que reciban en cada uno de sus pines para dar la apariencia del glifo deseado. Los segmentos generalmente son LED individuales o cristales líquidos.
 
-
+![Display 7 Segmentos](http://www.micropic.es/mpblog/wp-content/uploads/2007/07/7seg_pinouts.png "Display 7 Segmentos")
 
 ### Desarrollo:
 
@@ -477,3 +477,4 @@ Algunos ejemplos citados en formato IEEE
 2. “Verilog”, *Wikipedia*, 2021. [En línea](https://es.wikipedia.org/wiki/Verilog)
 3. “Suma Binaria”, *Ladelec*. [En línea](https://www.ladelec.com/teoria/electronica-digital/401-suma-binaria)
 4. D. Martinez, E. Navas, J. Gulín, "Herramienta de visualización dinámica de simulaciones del proceso de difusión en microfluidos con componentes biológicos", *Revista Cubana de Ciencias Informáticas*, vol. 10, pp. 88, 2016. [En línea](http://scielo.sld.cu/pdf/rcci/v10s1/rcci07517.pdf)
+5. "Memorias", *Scuola Elettrica*, 2021. [En línea](https://scuolaelettrica.it/escuelaelectrica/elettronica/differe7.php#:~:text=Se%20dice%20memoria%20un%20circuito,los%20datos%20uno%20tras%20otro.)
