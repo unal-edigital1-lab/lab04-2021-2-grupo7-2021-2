@@ -20,7 +20,7 @@ El presente laboratorio buscar crear un banco de registro en el cual se puedan l
     ![Flip-Flop tipo S/R](/img/flip_flop_S_R.png  "Flip-Flop tipo S/R")
 
     * Flip-Flop tipo J/K: A diferencia del flip flop RS, en el caso de activarse ambas entradas a la vez, la salida adquiere el estado contrario al que tenía., se representa de la siguiente manera:
-    
+
     ![Flip-Flop tipo J/K](/img/flip_flop_J_K.png  "Flip-Flop tipo J/K")
 
     * Flip-Flop tipo D: Su función es dejar pasar lo que entra por D, a la salida Q, después de un pulso del reloj.
@@ -29,7 +29,7 @@ El presente laboratorio buscar crear un banco de registro en el cual se puedan l
 
 - Circuito Secuencial Síncrono: Un circuito secuencial síncrono utiliza señales que modifican su estado solo en instantes discretos de tiempo. La sincronización se logra a través de un dispositivo de sincronización llamado generador de señales de reloj que produce una sucesión periódica de pulsos de reloj. Estos se distribuyen en todo el sistema de tal manera que los elementos de almacenamiento sólo sean afectados a la llegada de cada pulso
 
-- Circuito de memoria: Se dice memoria un circuito en condiciones de mantener una información y hacerla disponible cuando se necesita. Se distinguen dos tipos de memorias: 
+- Circuito de memoria: Se dice memoria un circuito en condiciones de mantener una información y hacerla disponible cuando se necesita. Se distinguen dos tipos de memorias:
     * La memoria secuencial: Permite leer o escribir mediante la organización de los datos uno tras otro. Para leer un dato es necesario leer todos los almacenados previamente en el mismo orden de almacenamiento; para escribir un dato es necesario escribir después de el último previamente escrito.
     * La memoria aleatoria o random: Es un tipo de memoria en la que los datos se leen o se escriben datos en la posición deseada, por supuesto que necesitamos una codificación antes del almacenamiento de todas las direcciones de memoria, por lo que los datos se pueden almacenar a la deseada, sin orden secuencia; los datos pueden ser leídos directamente por conocer la dirección donde se almacena.
 
@@ -39,13 +39,14 @@ El presente laboratorio buscar crear un banco de registro en el cual se puedan l
 
 ### Desarrollo:
 
-#### 2numBCD:
+#### Parte 1 - Visualización:
 <!-- Revisar luego si vale la pena volver a poner los módulos de labs anteriores o solo decir como "esto lo explicamos en tal lab" -->
+Para diseñar todo el sistema de Banco de registros con visualización en displays 7-Segmentos era necesario probar cada submódulo por separado. Para lograr la visualización se modificó el módulo `BCD4bits` trabajado en la práctica anterior, de la siguiente manera:
 ```verilog
 `timescale 1ns / 1ps
 module BCD4bitsWreg(
-    input [3:0] num1,
-    input [3:0] num2,
+    input [3:0] num1, //Ahora se tienen 2 entradas que serán
+    input [3:0] num2, //las salidas del Banco de Registros
     input clk,
     output [0:6] sseg,
     output reg [3:0] an,
@@ -55,7 +56,7 @@ module BCD4bitsWreg(
 reg [3:0]bcd=0;
 //wire [15:0] num1=16'h4321;
 
-BCDtoSSeg bcdtosseg(.BCD(bcd), .SSeg(sseg));//El módulo visto en el lab anterior
+BCDtoSSeg bcdtosseg(.BCD(bcd), .SSeg(sseg)); //Sub-módulo visto en el lab anterior
 
 reg [26:0] cfreq=0;
 wire enable;
@@ -79,7 +80,7 @@ always @(posedge enable) begin
   end else begin
     count<= count+1;
     an<=4'b1101;
-    case (num1)
+    case (num1) //Codifica la entrada 1 a BCD
       4'ha:
         case (count)
           2'h2: begin bcd <= 4'h0;   an<=4'b1011; end
@@ -116,7 +117,7 @@ always @(posedge enable) begin
           2'h3: begin bcd <= 4'b0000;   an<=4'b0111; end
         endcase
     endcase
-    case (num2)
+    case (num2) //Codifica la entrada 2 a BCD
       4'ha:
         case (count)
           2'h0: begin bcd <= 4'h0;   an<=4'b1110; end
@@ -158,9 +159,10 @@ end
 
 endmodule
 ```
+Este módulo no se explica en detalle pues sería redundante explicar nuevamente el mismo funcionamiento del código.
 
 ##### Simulación:
-
+Para realizar la prueba del módulo `BCD2num` se utilizó el siguiente testbench:
 ```verilog
 `timescale 1ns / 1ps
 module BCD2num_TB;
@@ -197,11 +199,16 @@ module BCD2num_TB;
   end
 endmodule
 ```
+Este se encarga de inicializar los displays con dos números, un `5` para observar como se visualizará un número menor a 9 y un `15` para ver si la codificación se visualiza correctamente. `rst = 1`, debido a que la tarjeta *Cyclone IV* mantiene sus pulsadores en 1 y solo abre el circuito al oprimirlos, razón por la que el código del módulo `BCD2num` hace la división de frecuencia y el respectivo multiplexado de los ánodos de los displays si `rst = 1` y se detiene en otro caso.  
+Al hacer la simulación se obtuvo lo siguiente:
 
-![Resultado de la simulación para BCD2num](/src/Sim_2numBCD.jpg "Resultado de la simulación para BCD2num")
+![Resultado de la simulación para BCD2num](/img/Sim_2numBCD.jpg "Resultado de la simulación para BCD2num")
 
-#### BReg:
+Así como se observó en el laboratorio anterior, este módulo recorre desde el LSB hasta el MSB del número que reciba por entrada. Como en este caso son 2 números, primero se visualizan las unidades del número 2 *(El 15, entonces, se visualiza un 5=0100100)* y luego sus decenas *(1=1001111)*; acto seguido, cuando los ánodos pasan a `1011` y `0111` se visualizan las unidades para el número 1 *(5=0100100)* y luego las decenas *(0=0000001)*, respectivamente.  
+Una vez comprobado que la modificación funciona correctamente se procede a implementarla para determinar en cuales de los 8 displays 7-Segmentos de la tarjeta se van a visualizar las lecturas del sistema completo.
 
+#### Parte 2 - Banco de Registros:
+Para su diseño se empleó el código dado, el cual describe el módulo `BancoRegistro`y permite crear un arreglo de 2ⁿ registros del tamaño que se le indique al redefinir los parámetros `BIT_ADDR`y `BIT_DATO`, respectivamente.
 ```verilog
 `timescale 1ns / 1ps
 module BancoRegistro #(      		 // Parámetros
@@ -231,8 +238,8 @@ localparam NREG = 2 ** BIT_ADDR; /*Es decir, 2^BIT_ADDR. Esto es así porque por
                                    diferentes*/
 
 //Configuración del banco de registro
-reg [BIT_DATO-1:0] breg [NREG-1:0]; /*Crea NREG registros en total, cada uno de
-                                       BIT_DATO bits*/
+reg [BIT_DATO-1:0] breg [NREG-1:0]; /*Crea un arreglo de NREG registros, cada
+                                      uno de BIT_DATO bits*/
 
 reg [BIT_DATO-1:0] cont = 0; //Contador para el reset
 
@@ -258,9 +265,14 @@ always @(posedge clk) begin
 end
 endmodule
 ```
+Como una memoria o arreglo de registros de este estilo debe permitir la escritura y lectura simultáneas, se dispone de 3 direcciones: 2 de ellas (`addrRa` y `addrRb`) para leer la información almacenada en esas posiciones del banco (Lectura de dos posiciones en paralelo) y `addrW` para indicarle al sistema en qué posición se desea guardar un dato. Como la idea es mantener la información en las posiciones correspondientes,a menos que se le indique la orden de carga, se dispone del selector `RegWrite`, el cual habilita o deshabilita la carga de la información. Cabe aclarar que la lectura se realiza en todo momento; por ejemplo, al tener `addrRa = 101` y colocar `addrW = 101`, apenas se dé la orden de carga, el sistema permitirá ver el número cargado y reflejará cualquier cambio que se dé a la entrada hasta que `RegWrite = 0` nuevamente.  
+El módulo también incluye una funcionalidad de reset, la cual hace que todos los registros que conforman el banco se "borren". Esto se coloca entre comillas, porque no se utiliza el reset de los flip flop como tal, sino que se da la orden global para que todas las posiciones almacenen de forma asíncrona un 0 en todos sus bits.  
+El funcionamiento detallado del módulo se explica en los respectivos comentarios del código.
+
+Adicionalmente, se agregó la posibilidad de inicializar el banco con un archivo de memoria `Reg8.mem` que contiene datos HEX separados por algún delimitador (Salto de línea en este caso) y con la instrucción `$readmemh` se lee dicho archivo y se almacena, en orden desdendente, desde la posición `0` a la `NREG-1`, cada dato en una posición diferente. En caso de no haber suficientes datos, solo se inicializan las posiciones hasta donde alcance con las entradas del archivo y las demás se mantienen en 0 por defecto; o en caso contrario, si hay un número de datos mayor al tamaño del banco de registros, el sistema almacena hasta donde alcance y los demás datos son ignorados.
 
 ##### Simulación:
-
+Para probar el módulo `BancoRegistro` se utilizó el siguiente testbench:
 ```verilog
 `timescale 1ns / 1ps
 module TestBench;
@@ -275,9 +287,9 @@ module TestBench;
 	// Outputs
 	wire [3:0] datOutRa;
 	wire [3:0] datOutRb;
-  //Contador para la lectura (Del tamaño de las direcciones)
+  //Contador para la lectura
 	reg [2:0] i;
-	//Contador para la escritura ()
+	//Contador para la escritura
 	reg [3:0] j;
 	// Instantiate the Unit Under Test (UUT)
 	BancoRegistro #(3,4) uut (
@@ -324,7 +336,7 @@ module TestBench;
 			addrRb = i + 4;
 			#2 $display("El Valor de Registro %d = %d  y %d = %d", addrRa, datOutRa, addrRb, datOutRb);
         end
-		#1 rst = 0; //Borra el banco (Lo deja todo en 0000)
+		#1 rst = 0; #1 rst = 1; //Borra el banco (Lo deja todo en 0000)
 		$display("\nLectura luego del reset:");
 		//Lee el banco de 2 en 2 para verificar el efecto del reset
 		for (i = 0; i < 4; i = i + 1) begin
@@ -341,13 +353,27 @@ module TestBench;
  	end
 endmodule
 ```
+Este se divide en 3 etapas: En la primera se verifica que la inicialización de memoria sea correcta, para lo cual se recorren todas las posiciones aprovechando la lectura en paralelo para hacerlo más eficientemente. Nótese que es necesario inicializar `RegWrite = 0`, porque de lo contrario se cargaría un 0 en todas las posiciones por el valor dado a `datW` durante la inicialización de las variables. Luego llega la segunda etapa, la cual consiste en cargar datos diferentes en cada posición y acto seguido verificar que todo se haya guardado correctamente. Para eso se coloca `RegWrite = 1` mientras se carga y luego se vuelve a dejar en cero para que no se sobreescriban todas las posiciones con el último valor que haya quedado en `datW`\.  
+Y finalmente la etapa 3, en la cual se verifica la funcionalidad del reset al cambiar su estado a `rst = 0` y leer por última vez todas las posiciones del banco.
 
-![Resultado de la simulación para BancoRegistro](/src/Sim_Test_BReg.jpg "Resultado de la simulación para BancoRegistro")
+Para hacer la simulación fue necesario redefinir temporalmente la condición `cont < NREG` dentro del `for` que rellena de **0** el banco al hacer reset en el código para el módulo `BancoRegistro`, cambiándola por `cont < 8` (O en lugar de 8 se coloca el número de registros que se vayan a crear dentro del banco, es decir, el valor que tenga NREG). Esto se hace porque *Quartus* no sabe que valores se le darán externamente a los parámetros `BIT_ADDR` y `BIT_DATO` y por ende no logra calcular un valor para el parámetro local `NREG`, generándose el siguiente error para *Análisis y síntesis*:
 
-![Lecturas de los registros para explorar las funciones del banco](/src/Consola_Test_BReg.jpg "Lecturas de los registros para explorar las funciones del banco")
+![Error por tamaño indefinido de NREG](/img/Error_NREG.jpg "Error por tamaño indefinido de NREG")
 
-#### Lab4:
+Luego de hacer la modificación y sintetizar, se obtuvo el siguiente resultado de simulación:
 
+![Resultado de la simulación para BancoRegistro](/img/Sim_Test_BReg.jpg "Resultado de la simulación para BancoRegistro")
+
+Nótese como `addrRa` y `addrRb` se mantienen en `011` y `111`, respectivamente, y luego de almacenar nuevos valores en estas posiciones, cuando el reloj produce un flanco de subida al cabo de **17** y **25 ns**, en las salidas `datOutRa` y `datOutRb` se ven reflejados dichos valores almacenados, así `RegWrite = 1`, tal y como se explicó en el funcionamiento del módulo.  
+Esta simulación se lee más fácilmente con la ayuda de los comandos `$display`, los cuales imprimen en consola la dirección que se lee en cada etapa de la simulación con su respectivo valor almacenado, así:
+
+![Lecturas de los registros para explorar las funciones del banco](/img/Consola_Test_BReg.jpg "Lecturas de los registros para explorar las funciones del banco")
+
+Algo que faltó mencionar previamente es el contenido del archivo `Reg8.mem`. Este contiene los números **HEX impares** desde **15** a **1**, en orden **descendente**. Con esto en mente, se observa en la simulación que la inicialización de memoria se hizo correctamente. Por último, se observa como una vez se le da el pulso de reset, el registro se fija en **0** para todas las posiciones, tal como se esperaba. Por lo anterior, se puede seguir con la implementación de este módulo y así tener todo listo para diseñar el sistema completo.
+
+#### Parte 3 - Banco de registros 8x4 con visualización BCD:
+Finalmente, se diseñó el módulo maestro o *top entity*, el cual instancia un submódulo `BancoRegistro` y un submódulo `BCD2num`, interconectando estos dos a su vez con la ayuda de dos buses de 4 bits cada uno: `datA` y `datB`.  
+En el caso del submódulo `BancoRegistro`, fue necesario redefinir sus parámetros por defecto para el tamaño de memoria y la profundidad de la misma (El número de bits de cada registro). En este caso se determinó un tamaño de registro **3**, pero esto no significa que se cree un banco con 3 registros; recordemos que `NREG` fue definido como `2 ** BIT_ADDR`, es decir, `NREG` es una **potencia de 2**, entonces, al redefinir `BIT_ADDR` como 3 se crearán **2³ = 8** registros, de **4 bits** cada uno (Porque redefinimos `BIT_DATO = 4`).
 ```verilog
 module Lab4 (addrA, addrB, addrW, datW, RegWrite, clk, rst, SSeg, An);
 //Inputs y Outputs
@@ -364,7 +390,7 @@ output [3:0] An;
 wire [3:0] datA;
 wire [3:0] datB;
 
-BancoRegistro #(3,4) registro (
+BancoRegistro #(3,4) registro ( //BIT_ADDR = 3, BIT_DATO = 4
   .addrRa(addrA),
   .addrRb(addrB),
   .addrW(addrW),
@@ -386,8 +412,10 @@ BCD4bitsWreg visualizacion (.num1(datA),
 
 endmodule
 ```
+Este es un módulo muy simple, ya que solo se encarga de unir los submódulos y estos internamente se encargan de todas las operaciones lógcas necesarias para que el sistema funcione.
 
 ##### Simulación:
+Momento Xiomara equisde
 
 ```verilog
 module Lab4_TB;
@@ -396,7 +424,47 @@ endmodule
 ```
 
 Esto también falta
-![Resultado de la simulación para Lab4](/src/Sim_Lab4.jpg "Resultado de la simulación para Lab4")
+![Resultado de la simulación para Lab4](/img/Sim_Lab4.jpg "Resultado de la simulación para Lab4")
+
+### Implementación:
+#### Parte 1 - Visualización:
+Pines 2 números BCD
+
+![Asignación de pines para implementar el módulo BCD2num](/img/Pines_2numBCD.jpg "Asignación de pines para implementar el módulo BCD2num")
+
+Video
+
+[![Haga clic para ver el video](/img/Miniatura_2numBCD.jpg)](https://youtu.be/FuZlDRWVDdA "Haga clic para ver el video")
+
+#### Parte 2 - Banco de Registros:
+Pines Banco de Registros
+
+![Asignación de pines para implementar el módulo BancoRegistro](/img/Pines_Test_BReg.jpg "Asignación de pines para implementar el módulo BancoRegistro")
+
+Video
+
+[![Haga clic para ver el video](/img/Miniatura_Test_BReg.jpg)](https://youtu.be/7mbj8uYGhwQ "Haga clic para ver el video")
+
+#### Parte 3 - Banco de registros 8x4 con visualización BCD:
+Pines Lab4
+
+![Asignación de pines para implementar el módulo Lab4](/img/Pines_Lab4.jpg "Asignación de pines para implementar el módulo Lab4")
+
+Video
+
+[![Haga clic para ver el video](/img/Miniatura_Lab4.jpg)](https://youtu.be/LxDmQTBfW5k "Haga clic para ver el video")
+
+### Bibliografía:
+`Faltan las deferencias de Delwin`
+
+Algunos ejemplos citados en formato IEEE
+
+1. “Lenguaje de Descripción de Hardware”, *Wikipedia*, 2021. [En línea](https://es.wikipedia.org/wiki/Lenguaje_de_descripción_de_hardware)
+2. “Verilog”, *Wikipedia*, 2021. [En línea](https://es.wikipedia.org/wiki/Verilog)
+3. “Suma Binaria”, *Ladelec*. [En línea](https://www.ladelec.com/teoria/electronica-digital/401-suma-binaria)
+4. D. Martinez, E. Navas, J. Gulín, "Herramienta de visualización dinámica de simulaciones del proceso de difusión en microfluidos con componentes biológicos", *Revista Cubana de Ciencias Informáticas*, vol. 10, pp. 88, 2016. [En línea](http://scielo.sld.cu/pdf/rcci/v10s1/rcci07517.pdf)
+5. "Memorias", *Scuola Elettrica*, 2021. [En línea](https://scuolaelettrica.it/escuelaelectrica/elettronica/differe7.php#:~:text=Se%20dice%20memoria%20un%20circuito,los%20datos%20uno%20tras%20otro.)
+
 
 ---
 
@@ -444,37 +512,3 @@ Para poner un nuevo párrafo (Salto de línea), damos 2 veces enter.
 Para poner un video usamos una sintaxis similar a la de las imágenes. Aunque no se puede poner un reproductor dentro del documento, se puede poner una imagen que haga de hipervínculo hacia el video en cuestión, así:
 
 [![Haga clic para ver el video](/hdl/src/Imagen_como_miniatura.jpg)](https://youtu.be/CN2idjPgXRs "Haga clic para ver el video")
-
-### Implementación:
-Pines 2 números BCD
-
-![Asignación de pines para implementar el módulo BCD2num](/src/Pines_2numBCD.jpg "Asignación de pines para implementar el módulo BCD2num")
-
-Video
-
-[![Haga clic para ver el video](/src/Miniatura_2numBCD.jpg)](https://youtu.be/FuZlDRWVDdA "Haga clic para ver el video")
-
-Pines Banco de Registros
-
-![Asignación de pines para implementar el módulo BancoRegistro](/src/Pines_Test_BReg.jpg "Asignación de pines para implementar el módulo BancoRegistro")
-
-Video
-
-[![Haga clic para ver el video](/src/Miniatura_Test_BReg.jpg)](https://youtu.be/7mbj8uYGhwQ "Haga clic para ver el video")
-
-Pines Lab4
-
-![Asignación de pines para implementar el módulo Lab4](/src/Pines_Lab4.jpg "Asignación de pines para implementar el módulo Lab4")
-
-Video
-
-[![Haga clic para ver el video](/src/Miniatura_Lab4.jpg)](https://youtu.be/LxDmQTBfW5k "Haga clic para ver el video")
-
-### Bibliografía:
-Algunos ejemplos citados en formato IEEE
-
-1. “Lenguaje de Descripción de Hardware”, *Wikipedia*, 2021. [En línea](https://es.wikipedia.org/wiki/Lenguaje_de_descripción_de_hardware)
-2. “Verilog”, *Wikipedia*, 2021. [En línea](https://es.wikipedia.org/wiki/Verilog)
-3. “Suma Binaria”, *Ladelec*. [En línea](https://www.ladelec.com/teoria/electronica-digital/401-suma-binaria)
-4. D. Martinez, E. Navas, J. Gulín, "Herramienta de visualización dinámica de simulaciones del proceso de difusión en microfluidos con componentes biológicos", *Revista Cubana de Ciencias Informáticas*, vol. 10, pp. 88, 2016. [En línea](http://scielo.sld.cu/pdf/rcci/v10s1/rcci07517.pdf)
-5. "Memorias", *Scuola Elettrica*, 2021. [En línea](https://scuolaelettrica.it/escuelaelectrica/elettronica/differe7.php#:~:text=Se%20dice%20memoria%20un%20circuito,los%20datos%20uno%20tras%20otro.)

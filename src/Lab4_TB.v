@@ -17,9 +17,9 @@ wire [3:0] An;
 
 
   //Contador para la lectura (Del tamaño de las direcciones)
-	reg [2:0] i;
+	//reg [2:0] i;
 	//Contador para la escritura ()
-	reg [3:0] j;
+	//reg [3:0] j;
 
 
 	// Instantiate the Unit Under Test (UUT)
@@ -36,7 +36,7 @@ wire [3:0] An;
 	);
 
 	initial begin
-		// Initialize Inputs 
+		// Initialize Inputs
 		addrA = 0;
 		addrB = 0;
 		addrW = 0;
@@ -44,43 +44,39 @@ wire [3:0] An;
 		RegWrite = 0;
 		clk = 0;
 		rst = 1;
-		/*Lee el banco de 2 en 2 (en paralelo) para verificar la inicialización
-		previa de la memoria con el archivo Reg8.mem*/
-		$display("\nLectura de la inicializacion previa:");
-		for (i = 0; i < 4; i = i + 1) begin
-			addrA = i; //Lee del Reg_0 al Reg_4
-			addrB = i + 4; //Lee del Reg_4 al Reg_8
-			#2 $display("El Valor de Registro %d = %d  y %d = %d", addrA, SSeg, addrB, An);
-    end
-		#2 RegWrite = 1; //Habilita la carga
-		//Carga algunos datos sucesivos
-		for (j = 0; j < 8; j = j + 1) begin
-			addrW = j;
-			datW = j;
-			#2;
-		end
-		#2 RegWrite = 0; //Habilita la lectura
-		$display("\nLectura luego de la carga:");
-		//Lee el banco de 2 en 2
-		for (i = 0; i < 4; i = i + 1) begin
-			addrA = i;
-			addrB = i + 4;
-			#2 $display("El Valor de Registro %d = %d  y %d = %d", addrA, SSeg, addrB, An);
-    end
-		#1 rst = 0; //Borra el banco (Lo deja todo en 0000)
-		$display("\nLectura luego del reset:");
-		//Lee el banco de 2 en 2 para verificar el efecto del reset
-		for (i = 0; i < 4; i = i + 1) begin
-			addrA = i;
-			addrB = i + 4;
-			#2 $display("El Valor de Registro %d = %d  y %d = %d", addrA, SSeg, addrB, An);
-    end
+		/*Lee dos direcciones para verificar la inicialización previa de la memoria
+		  con el archivo Reg8.mem*/
+
+			addrA = 1;
+			addrB = 6;
+			#1000000;
+
+		RegWrite = 1; //Habilita la carga
+		#100000;
+		//Carga datos en las mismas posiciones previamente leídas
+
+			addrW = 6;
+			datW = 5;
+			#500000;
+			addrW = 1;
+			datW = 11;
+			#500000;
+
+		RegWrite = 0; //Habilita la lectura
+		//Lee las posiciones recién cargadas
+
+			addrA = 1;
+			addrB = 6;
+			#1050000;
+
+		rst = 0; //Borra el banco y se lee de una vez su efecto
+		#50000;
+		rst = 1;
 	end
 	//Emulación de los pulsos de reloj para que todo funcione
 	always #1 clk = ~clk;
 	initial begin: TEST_CASE
 		$dumpfile("TestBench.vcd");
-		#(55) $stop;
+		#(4300000) $stop;
  	end
 endmodule
-

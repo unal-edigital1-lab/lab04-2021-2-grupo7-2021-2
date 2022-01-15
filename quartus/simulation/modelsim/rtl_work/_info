@@ -1,0 +1,136 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/simulation/modelsim
+vBancoRegistro
+Z1 !s110 1642004215
+!i10b 1
+!s100 cKBoO0fOPXU<m9hO9d[Ac2
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I4nEAOR1j7zo1S5DojhX;d1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1641654022
+8C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v
+FC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v
+!i122 3
+L0 21 55
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1642004215.000000
+!s107 C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src|C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v|
+!i113 1
+Z6 o-vlog01compat -work work
+Z7 !s92 -vlog01compat -work work +incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src
+Z8 tCvgOpt 0
+n@banco@registro
+vBCD4bitsWreg
+R1
+!i10b 1
+!s100 ZcfWzgUU5g2lP9UTSjh8V1
+R2
+Im7V@[J]7AB0E=KT=Gf9YN1
+R3
+R0
+w1641646910
+8C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v
+FC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v
+!i122 2
+L0 2 114
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src|C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCD4bitsWreg.v|
+!i113 1
+R6
+R7
+R8
+n@b@c@d4bits@wreg
+vBCDtoSSeg
+R1
+!i10b 1
+!s100 dPZ^[1PlOV45kZe3Pno?N1
+R2
+IN0M6O_3@IIRVMbRY?dm4o0
+R3
+R0
+w1638316889
+8C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCDtoSSeg.v
+FC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCDtoSSeg.v
+!i122 1
+L0 1 28
+R4
+r1
+!s85 0
+31
+Z9 !s108 1642004214.000000
+!s107 C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCDtoSSeg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src|C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BCDtoSSeg.v|
+!i113 1
+R6
+R7
+R8
+n@b@c@dto@s@seg
+vLab4
+!s110 1642004214
+!i10b 1
+!s100 a_9W;EU>P76iXdA6lkDJj2
+R2
+I7zS`m4@E_GcO:Ghk9>U[o2
+R3
+R0
+w1641521568
+8C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v
+FC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v
+!i122 0
+L0 1 34
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src|C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/Lab4.v|
+!i113 1
+R6
+R7
+R8
+n@lab4
+vLab4_TB
+R1
+!i10b 1
+!s100 >d_7DnFVa5aMg04blMY^Y2
+R2
+I]K8c3i?COnVYHEYM:HV^S2
+R3
+R0
+w1642004084
+8C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/../src/Lab4_TB.v
+FC:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/../src/Lab4_TB.v
+!i122 4
+L0 3 80
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/../src/Lab4_TB.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/../src|C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/../src/Lab4_TB.v|
+!i113 1
+R6
+!s92 -vlog01compat -work work +incdir+C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/../src
+R8
+n@lab4_@t@b

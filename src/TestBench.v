@@ -37,9 +37,9 @@ module TestBench;
 	wire [3:0] datOutRa;
 	wire [3:0] datOutRb;
 
-  //Contador para la lectura (Del tamaño de las direcciones)
+  //Contador para la lectura
 	reg [2:0] i;
-	//Contador para la escritura ()
+	//Contador para la escritura
 	reg [3:0] j;
 
 	// Instantiate the Unit Under Test (UUT)
@@ -87,7 +87,7 @@ module TestBench;
 			addrRb = i + 4;
 			#2 $display("El Valor de Registro %d = %d  y %d = %d", addrRa, datOutRa, addrRb, datOutRb);
     end
-		#1 rst = 0; //Borra el banco (Lo deja todo en 0000)
+		#1 rst = 0; #1 rst = 1; //Borra el banco (Lo deja todo en 0000)
 		$display("\nLectura luego del reset:");
 		//Lee el banco de 2 en 2 para verificar el efecto del reset
 		for (i = 0; i < 4; i = i + 1) begin
