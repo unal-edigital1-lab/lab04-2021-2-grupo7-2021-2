@@ -62,7 +62,7 @@ end
 
 always @(posedge clk) begin
   if (rst == 0) begin
-    for (cont = 0; cont < NREG; cont = cont + 1) begin
+    for (cont = 0; cont < 8; cont = cont + 1) begin
     //NOTA:Poner el numero de registros en vez de NREG para probar solo el banco
       breg [cont] <= 0;
     end

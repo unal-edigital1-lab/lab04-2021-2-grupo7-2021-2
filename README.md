@@ -6,34 +6,43 @@
 - Diego Alejandro Sánchez Mendoza
 
 ### Palabras Clave:
-Banco de registro, Flip flops, Lógica secuencial, Memoria, Visualización dinámica
+Banco de registros, Flip-Flop, Lógica secuencial, Memoria, Visualización dinámica
 
 ### Objetivo:
-El presente laboratorio buscar crear un banco de registro en el cual se puedan leer y escribir registro de 4 bits; el ingreso de la informacion se realizara por medio de interruptores y este debe ser capaz de permitir la lectura de 2 registros simultaneamente adicionalmente debe permitir la escritura de registros acorde a la señal de control.
+Crear un banco de registros en el cual se puedan leer y escribir registros de 4 bits; el ingreso de la información se realizará por medio de interruptores y este debe ser capaz de permitir la lectura de 2 registros simultaneamente. Adicionalmente debe permitir la escritura de registros acorde a la señal de control.
 
 ### Marco Teórico:
-- Banco de registros: Esta formado por un numero n de registros que pueden ser capaces de ser seleccionados mediante una señal de control para ser leidos o escritos. Por lo generar el banco de registro tiene un puerto de salida de datos y uno de entrada.
+- Banco de registros: Está formado por un numero **n** de registros que pueden ser seleccionados mediante una señal de control para ser escritos o leídos. Por lo general, el banco de registros tiene un puerto de salida de datos y uno de entrada.
 
-- Flip - Flops: Son dispositivos biestables **(2 estados)**, que sirven como memoria básica para las operaciones de logica secuencial. Estos son ampliamente usados para el almacenamiento y transferencia de datos digitales  se usan normalmente en unidades llamadas “registros” , para el almacenamiento de datos numéricos binarios, estos son los tipos de flip - flops mas utilizados:
-    * Flip-Flop tipo S/R: Mantiene el dato hasta que ocurre un reset, se representan de la siguiente manera:
+- Flip-Flop: Son dispositivos biestables **(2 estados)**, que sirven como memoria básica para las operaciones de logica secuencial. Estos son ampliamente usados para el almacenamiento y transferencia de datos digitales. Se usan normalmente en unidades llamadas “registros” , para el almacenamiento de datos numéricos binarios, estos son los tipos de Flip-Flop más utilizados:
+    * Flip-Flop tipo S/R: Es el más básico y a diferencia de los otros, es asíncrono. Este opera de acuerdo a la siguiente tabla de verdad:
+
+      |   Acción  | S | R | Q | ~Q |
+      |:---------:|:-:|:-:|:-:|:--:|
+      |  Mantiene | 0 | 0 | 0 |  1 |
+      | Fija un 0 | 0 | 1 | 0 |  1 |
+      | Fija un 1 | 1 | 0 | 1 |  0 |
+      | Prohibido | 1 | 1 | 1 | 1  |
+
+    Los valores de **Q** y **~Q** se asumen con un **S=0** y **R=1** previos. La condición **11** está prohibida en este Flip-Flop ya que esta rompe la lógica de tener dos salidas distintas (Una siendo el negado de la otra). Gráficamente, se representa como:
 
     ![Flip-Flop tipo S/R](/img/flip_flop_S_R.png  "Flip-Flop tipo S/R")
 
-    * Flip-Flop tipo J/K: A diferencia del flip flop RS, en el caso de activarse ambas entradas a la vez, la salida adquiere el estado contrario al que tenía., se representa de la siguiente manera:
+    * Flip-Flop tipo J/K: A diferencia del flip flop S/R, en el caso de activarse ambas entradas a la vez, la salida adquiere el estado contrario al que tenía, se representa de la siguiente manera:
 
     ![Flip-Flop tipo J/K](/img/flip_flop_J_K.png  "Flip-Flop tipo J/K")
 
-    * Flip-Flop tipo D: Su función es dejar pasar lo que entra por D, a la salida Q, después de un pulso del reloj.
+    * Flip-Flop tipo D: Su función es dejar pasar la señal que ingresa por D, a la salida Q, después de un pulso del reloj.
 
     ![Flip-Flop tipo D](/img/flip_flop_D.png  "Flip-Flop tipo D")
 
-- Circuito Secuencial Síncrono: Un circuito secuencial síncrono utiliza señales que modifican su estado solo en instantes discretos de tiempo. La sincronización se logra a través de un dispositivo de sincronización llamado generador de señales de reloj que produce una sucesión periódica de pulsos de reloj. Estos se distribuyen en todo el sistema de tal manera que los elementos de almacenamiento sólo sean afectados a la llegada de cada pulso
+- Circuito Secuencial Síncrono: Un circuito secuencial síncrono utiliza señales que modifican su estado solo en instantes discretos de tiempo. La sincronización se logra a través de un dispositivo de sincronización llamado generador de señales de reloj que produce una sucesión periódica de pulsos de reloj. Estos se distribuyen en todo el sistema de tal manera que los elementos de almacenamiento sólo sean afectados a la llegada de cada pulso.
 
-- Circuito de memoria: Se dice memoria un circuito en condiciones de mantener una información y hacerla disponible cuando se necesita. Se distinguen dos tipos de memorias:
-    * La memoria secuencial: Permite leer o escribir mediante la organización de los datos uno tras otro. Para leer un dato es necesario leer todos los almacenados previamente en el mismo orden de almacenamiento; para escribir un dato es necesario escribir después de el último previamente escrito.
-    * La memoria aleatoria o random: Es un tipo de memoria en la que los datos se leen o se escriben datos en la posición deseada, por supuesto que necesitamos una codificación antes del almacenamiento de todas las direcciones de memoria, por lo que los datos se pueden almacenar a la deseada, sin orden secuencia; los datos pueden ser leídos directamente por conocer la dirección donde se almacena.
+- Circuito de memoria: Se dice memoria un circuito en condiciones de mantener una información y hacerla disponible cuando se necesite. Se distinguen dos tipos de memorias:
+    * La memoria secuencial: Permite leer o escribir mediante la organización de los datos uno tras otro. Para leer un dato es necesario leer todos los almacenados previamente en el mismo orden de almacenamiento; para escribir un dato es necesario escribir después del último previamente escrito.
+    * La memoria aleatoria o random: Es un tipo de memoria en la que los datos se leen o se escriben en la posición deseada. Esto se logra con una codificación previa de todas las direcciones de memoria, por lo que los datos se pueden almacenar a como se desee, sin llevar un orden secuencial; de forma análoga, los datos pueden ser leídos directamente al indicar la dirección donde se almacenan.
 
-- Display 7 segmentos: Son dispositivos electrónicos de visualización, los cuales se componen de varios segmentos que se encienden y apagan según los niveles de voltaje que reciban en cada uno de sus pines para dar la apariencia del glifo deseado. Los segmentos generalmente son LED individuales o cristales líquidos.
+- Display 7-Segmentos: Son dispositivos electrónicos de visualización, los cuales se componen de varios segmentos que se encienden y apagan según los niveles de voltaje que reciban en cada uno de sus pines para dar la apariencia del glifo deseado. Los segmentos generalmente son LED individuales o cristales líquidos.
 
 ![Display 7 Segmentos](http://www.micropic.es/mpblog/wp-content/uploads/2007/07/7seg_pinouts.png "Display 7 Segmentos")
 
@@ -41,7 +50,7 @@ El presente laboratorio buscar crear un banco de registro en el cual se puedan l
 
 #### Parte 1 - Visualización:
 <!-- Revisar luego si vale la pena volver a poner los módulos de labs anteriores o solo decir como "esto lo explicamos en tal lab" -->
-Para diseñar todo el sistema de Banco de registros con visualización en displays 7-Segmentos era necesario probar cada submódulo por separado. Para lograr la visualización se modificó el módulo `BCD4bits` trabajado en la práctica anterior, de la siguiente manera:
+Para diseñar todo el sistema de Banco de registros con visualización en displays 7-Segmentos era necesario probar cada submódulo por separado. Para lograr la visualización se modificó el módulo `BCD4bits` trabajado en el *laboratorio anterior*, de la siguiente manera:
 ```verilog
 `timescale 1ns / 1ps
 module BCD4bitsWreg(
@@ -56,7 +65,7 @@ module BCD4bitsWreg(
 reg [3:0]bcd=0;
 //wire [15:0] num1=16'h4321;
 
-BCDtoSSeg bcdtosseg(.BCD(bcd), .SSeg(sseg)); //Sub-módulo visto en el lab anterior
+BCDtoSSeg bcdtosseg(.BCD(bcd), .SSeg(sseg)); //Sub-módulo del lab anterior
 
 reg [26:0] cfreq=0;
 wire enable;
@@ -204,7 +213,7 @@ Al hacer la simulación se obtuvo lo siguiente:
 
 ![Resultado de la simulación para BCD2num](/img/Sim_2numBCD.jpg "Resultado de la simulación para BCD2num")
 
-Así como se observó en el laboratorio anterior, este módulo recorre desde el LSB hasta el MSB del número que reciba por entrada. Como en este caso son 2 números, primero se visualizan las unidades del número 2 *(El 15, entonces, se visualiza un 5=0100100)* y luego sus decenas *(1=1001111)*; acto seguido, cuando los ánodos pasan a `1011` y `0111` se visualizan las unidades para el número 1 *(5=0100100)* y luego las decenas *(0=0000001)*, respectivamente.  
+Así como se observó en el *laboratorio anterior*, este módulo recorre desde el LSB hasta el MSB del número que reciba por entrada. Como en este caso son 2 números, primero se visualizan las unidades del número 2 *(El 15, entonces, se visualiza un 5=0100100)* y luego sus decenas *(1=1001111)*; acto seguido, cuando los ánodos pasan a `1011` y `0111` se visualizan las unidades para el número 1 *(5=0100100)* y luego las decenas *(0=0000001)*, respectivamente.  
 Una vez comprobado que la modificación funciona correctamente se procede a implementarla para determinar en cuales de los 8 displays 7-Segmentos de la tarjeta se van a visualizar las lecturas del sistema completo.
 
 #### Parte 2 - Banco de Registros:
@@ -269,7 +278,14 @@ Como una memoria o arreglo de registros de este estilo debe permitir la escritur
 El módulo también incluye una funcionalidad de reset, la cual hace que todos los registros que conforman el banco se "borren". Esto se coloca entre comillas, porque no se utiliza el reset de los flip flop como tal, sino que se da la orden global para que todas las posiciones almacenen de forma asíncrona un 0 en todos sus bits.  
 El funcionamiento detallado del módulo se explica en los respectivos comentarios del código.
 
-Adicionalmente, se agregó la posibilidad de inicializar el banco con un archivo de memoria `Reg8.mem` que contiene datos HEX separados por algún delimitador (Salto de línea en este caso) y con la instrucción `$readmemh` se lee dicho archivo y se almacena, en orden desdendente, desde la posición `0` a la `NREG-1`, cada dato en una posición diferente. En caso de no haber suficientes datos, solo se inicializan las posiciones hasta donde alcance con las entradas del archivo y las demás se mantienen en 0 por defecto; o en caso contrario, si hay un número de datos mayor al tamaño del banco de registros, el sistema almacena hasta donde alcance y los demás datos son ignorados.
+Adicionalmente, se agregó la posibilidad de inicializar el banco con un archivo de memoria `Reg8.mem` que contiene datos HEX separados por algún delimitador (Salto de línea en este caso) y con la instrucción `$readmemh` se lee dicho archivo y se almacena, en orden desdendente, desde la posición `0` a la `NREG-1`, cada dato en una posición diferente. En caso de no haber suficientes datos, solo se inicializan las posiciones hasta donde alcance con las entradas del archivo y las demás se mantienen en 0 por defecto; o en caso contrario, si hay un número de datos mayor al tamaño del banco de registros, el sistema almacena hasta donde alcance y los demás datos son ignorados.  
+Para inicializar la memoria, además de colocar el comando de verilog `$readmemh` o `readmemb` si el archivo contiene datos BIN y no HEX, es muy importante colocar el archivo `Reg8.mem` en la carpeta donde se encuentren los archivos verilog *(Con extensión .v)* y también en la carpeta *simulation/modelsim/* que genera el proyecto de *Quartus* una vez se le ordena que haga la *simulación RTL* por primera vez. De lo contrario se producirán 2 errores:
+
+![Error en simulación por no colocar el archivo de memoria en la carpeta simulation/modelsim/](/img/Error_Reg8.jpg "Error en simulación por no colocar el archivo de memoria en la carpeta simulation/modelsim/")
+
+Este error se produce cuando no se guarda `Reg8.mem` en la carpeta *simulation/modelsim/*. Si bien no impide que se haga la sintetización y el resto de la simulación, no permitirá que se inicialice la memoria. Luego, si no se guarda `Reg8.mem` en la carpeta que contiene los archivos **.v*, al intentar sintetizar el código se producirá el siguiente error, el cual, a diferencia del anterior, si impide que se complete el proceso exitosamente:
+
+![Error en sintetización por no colocar el archivo de memoria en la carpeta que contiene los archivos verilog](/img/Error_Reg8_Comp.jpg "Error en sintetización por no colocar el archivo de memoria en la carpeta que contiene los archivos verilog")
 
 ##### Simulación:
 Para probar el módulo `BancoRegistro` se utilizó el siguiente testbench:
@@ -371,8 +387,14 @@ Esta simulación se lee más fácilmente con la ayuda de los comandos `$display`
 
 Algo que faltó mencionar previamente es el contenido del archivo `Reg8.mem`. Este contiene los números **HEX impares** desde **15** a **1**, en orden **descendente**. Con esto en mente, se observa en la simulación que la inicialización de memoria se hizo correctamente. Por último, se observa como una vez se le da el pulso de reset, el registro se fija en **0** para todas las posiciones, tal como se esperaba. Por lo anterior, se puede seguir con la implementación de este módulo y así tener todo listo para diseñar el sistema completo.
 
+Si se da el error en simulación por no guardar el archivo `Reg8.mem` en la carpeta `simulation/modelsim/`, la simulación se ve así:
+
+![Resultado de la simulación para BancoRegistro](/img/Sim_Test_BReg_con_Error.jpg "Resultado de la simulación para BancoRegistro")
+
+Nótese como en la primera etapa de lecturas no hay señal alguna para `datOutRa` y `datOutRb`, debido a que *ModelSim* no puede encontrar el archivo `Reg8.mem` para leerlo. Estas adquieren un valor apenas se cargan datos en las posiciones respectivas que se están leyendo en ese momento (`011` y `111`).
+
 #### Parte 3 - Banco de registros 8x4 con visualización BCD:
-Finalmente, se diseñó el módulo maestro o *top entity*, el cual instancia un submódulo `BancoRegistro` y un submódulo `BCD2num`, interconectando estos dos a su vez con la ayuda de dos buses de 4 bits cada uno: `datA` y `datB`.  
+Finalmente, se diseñó el módulo maestro o *top entity*, el cual instancia un submódulo `BancoRegistro` y un submódulo `BCD2num`, interconectando estos dos a su vez con la ayuda de dos buses de 4 bits cada uno: `datA` y `datB`\.  
 En el caso del submódulo `BancoRegistro`, fue necesario redefinir sus parámetros por defecto para el tamaño de memoria y la profundidad de la misma (El número de bits de cada registro). En este caso se determinó un tamaño de registro **3**, pero esto no significa que se cree un banco con 3 registros; recordemos que `NREG` fue definido como `2 ** BIT_ADDR`, es decir, `NREG` es una **potencia de 2**, entonces, al redefinir `BIT_ADDR` como 3 se crearán **2³ = 8** registros, de **4 bits** cada uno (Porque redefinimos `BIT_DATO = 4`).
 ```verilog
 module Lab4 (addrA, addrB, addrW, datW, RegWrite, clk, rst, SSeg, An);
@@ -415,7 +437,7 @@ endmodule
 Este es un módulo muy simple, ya que solo se encarga de unir los submódulos y estos internamente se encargan de todas las operaciones lógcas necesarias para que el sistema funcione.
 
 ##### Simulación:
-Momento Xiomara equisde
+`Momento Xiomara equisde`
 
 ```verilog
 module Lab4_TB;
@@ -428,87 +450,49 @@ Esto también falta
 
 ### Implementación:
 #### Parte 1 - Visualización:
-Pines 2 números BCD
+Se implementaron casi los mismos pines que los utilizados en el *laboratorio anterior* para el módulo BCD4bits:
 
 ![Asignación de pines para implementar el módulo BCD2num](/img/Pines_2numBCD.jpg "Asignación de pines para implementar el módulo BCD2num")
 
-Video
+La diferencia es que ahora se incluyen asignaciones para el número 1, las cuales corresponden a la otra mitad del dipswitch de la tarjeta (Las asignaciones para el número 2 son las mismas que se usaron en el *laboratorio anterior*) y también se modificaron las asignaciones de `An` para que no se vean los dos números pegados en el mismo arreglo de displays, sino que tengan una separación de 2 displays apagados de por medio. Es decir, se asignó `An` de tal manera que los números se visualicen así:
+
+![Displays a utilizar para lograr la visualización BCD de dos entradas simultáneas](/img/Visualizacion.jpg "Displays a utilizar para lograr la visualización BCD de dos entradas simultáneas")
+
+El funcionamiento de este módulo se presenta en el video a continuación:
 
 [![Haga clic para ver el video](/img/Miniatura_2numBCD.jpg)](https://youtu.be/FuZlDRWVDdA "Haga clic para ver el video")
 
+Tal y como se vió en simulación, los números **menores a 9** se visualizan como **0X**, donde **X** es el número en cuestión, y los que son **mayores a 9** se codifican correctamente a BCD.
+
 #### Parte 2 - Banco de Registros:
-Pines Banco de Registros
+Los pines de la tarjeta *Cyclone IV* que fueron asignados, son:
 
 ![Asignación de pines para implementar el módulo BancoRegistro](/img/Pines_Test_BReg.jpg "Asignación de pines para implementar el módulo BancoRegistro")
 
-Video
+Esta asignación se asemeja a la vista en el *laboratorio anterior* para el caso de la visualización dinámica con 4 displays 7-Segmentos, en tanto, como hay más de 8 bits de entrada (3 para `addrRa`, 3 para `addrRb`, 1 para `RegWrite`, 3 para `addrW` y 4 para `datW`. En total 16), se necesita una forma de ingresar los demás bits para. Entonces, se hizo uso de los pines para jumpers y una protoboard.  
+Las entradas para las direcciones de lectura se asignaron a estos jumpers y el bits de carga/lectura, dirección de escritura y entrada de dato para cargar se asignaron a los 8 bits del dipswitch. Respecto a los 8 bits de salida, estos fueron asignados a los leds de la tarjeta, siguiendo un orden específico:
+
+![Leds a utilizar para lograr la visualización de dos registros a la vez](/img/Visualizacion_BReg.jpg "Leds a utilizar para lograr la visualización de dos registros a la vez")
+
+Lo anterior se entiende mejor al ver el funcionamiento del banco de registros en el video a continuación:
 
 [![Haga clic para ver el video](/img/Miniatura_Test_BReg.jpg)](https://youtu.be/7mbj8uYGhwQ "Haga clic para ver el video")
 
+Como se pudo observar, el banco de registros funciona correctamente y cumple a la perfección lo explicado en secciones anteriores.
+
 #### Parte 3 - Banco de registros 8x4 con visualización BCD:
-Pines Lab4
+La asignación de pines para este módulo es un compendio de las anteriores, como se observa a continuación:
 
 ![Asignación de pines para implementar el módulo Lab4](/img/Pines_Lab4.jpg "Asignación de pines para implementar el módulo Lab4")
 
-Video
+Lo único que cambia es el nombre de algunas señales, pero esto es meramente estético y no afecta en lo absoluto a los pines correspondientes. El funcionamiento del sistema completo se muestra en el siguiente video:
 
 [![Haga clic para ver el video](/img/Miniatura_Lab4.jpg)](https://youtu.be/LxDmQTBfW5k "Haga clic para ver el video")
+
+Algo que faltó presentar en el video de funcionamiento del módulo `BancoRegistro` fue la inicialización de memoria, ya que creíamos que solo servía en simulación y no era sintetizable como tal, por lo cual se comentó esa línea antes de grabar el video de su implementación, no obstante, para el sistema completo lo pasamos por alto y nos dimos cuenta que también se inicializaba el banco con los datos del archivo `Reg8.mem`\.  
+El funcionamiento es practicamente una réplica de la simulación del módulo `BancoRegistro`, es decir, se observa como la inicialización funciona correctamente, luego se hace reset y se verifica con algunas direcciones que todo está en **0**; se cargan datos y se leen correctamente y como valor agregado, se muestra lo explicado previamente que sucedía al dejar `RegWrite = 1`, es decir, cualquier cambio a la entrada se refleja a la salida, mientras que al dejar `RegWrite = 0`, el banco mantiene la información cargada anteriormente y es indiferente a cualquier cambio en `datW`. Finalmente, como no se cargaron datos de forma manual que fuesen **mayores a 9**, se presentan algunos ejemplos de que, en efecto, se pueden cargar números de 4 bits **mayores a 9** y al momento de leer esas posiciones, la información se visualiza en BCD.
 
 ### Bibliografía:
 `Faltan las deferencias de Delwin`
 
-Algunos ejemplos citados en formato IEEE
-
-1. “Lenguaje de Descripción de Hardware”, *Wikipedia*, 2021. [En línea](https://es.wikipedia.org/wiki/Lenguaje_de_descripción_de_hardware)
-2. “Verilog”, *Wikipedia*, 2021. [En línea](https://es.wikipedia.org/wiki/Verilog)
-3. “Suma Binaria”, *Ladelec*. [En línea](https://www.ladelec.com/teoria/electronica-digital/401-suma-binaria)
-4. D. Martinez, E. Navas, J. Gulín, "Herramienta de visualización dinámica de simulaciones del proceso de difusión en microfluidos con componentes biológicos", *Revista Cubana de Ciencias Informáticas*, vol. 10, pp. 88, 2016. [En línea](http://scielo.sld.cu/pdf/rcci/v10s1/rcci07517.pdf)
-5. "Memorias", *Scuola Elettrica*, 2021. [En línea](https://scuolaelettrica.it/escuelaelectrica/elettronica/differe7.php#:~:text=Se%20dice%20memoria%20un%20circuito,los%20datos%20uno%20tras%20otro.)
-
-
----
-
-## Borrar esto al final ↓↓
-Si quieremos meter bloques grandes de código y que se vea nice lo ponemos con esta sintaxis:
-```verilog
-//Acá el código
-module cajanegra(
-  input hola[3:0];
-  output buenas[3:0];
-);
-endmodule
-```
-
-Para meter imágenes locales (Guardamos la imagen en la carpeta src del repositorio antes de), las citamos así:
-
-![Título que se muestra si la imagen no carga](/hdl/src/nombre_de_la_imagen.jpg "Título que se muestra al poner el cursor encima de la imagen")
-
-***NOTA:*** *Es impotante dejar el enter antes y despues de cada imagen para que no se den problemas al subirlo a github.*
-
-Si se trata de una imagen de internet, la citamos así:
-
-![Titulo que se muestra si la imagen no carga](https://raw.githubusercontent.com/Fabeltranm/SPARTAN6-ATMEGA-MAX5864/master/lab/lab02-sumador4b/doc/sum4b.jpg "Título que se muestra al poner el cursor encima de la imagen")
-Si queremos poner una nota al pie, ponemos así [^Nota2].
-[^Nota2]: Luego así para que esto aparezca al final del documento como la nota en cuestión.
-
-Si queremos colocar una tabla, hacemos lo siguiente:
-
-| cosa 1 |   cosa 2  |   cosa 3  |   cosa 4  |   cosa 5  |
-|:------:|:---------:|:---------:|:---------:|:---------:|
-|   a    |     b     |     c     |     d     |     e     |
-
-***NOTA:*** *Esto se construye más sencillo con la ayuda de <https://www.tablesgenerator.com/markdown_tables>.*
-***NOTA:*** *Al igual que con las imágenes, es necesario dejar un enter antes y después para evitar errores.*
-
-Para poner un punto aparte toca poner 2 espacios antes de dar enter para que markdown no pegue los renglones como si fuese un punto seguido. Ejemplo:  
-Sin los 2 espacios.
-Pasa esto.
-<!-- Comentarios en Markdown :O -->
-Con los 2 espacios.  
-Pasa esto.
-
-Para poner un nuevo párrafo (Salto de línea), damos 2 veces enter.
-
-Para poner un video usamos una sintaxis similar a la de las imágenes. Aunque no se puede poner un reproductor dentro del documento, se puede poner una imagen que haga de hipervínculo hacia el video en cuestión, así:
-
-[![Haga clic para ver el video](/hdl/src/Imagen_como_miniatura.jpg)](https://youtu.be/CN2idjPgXRs "Haga clic para ver el video")
+1. "Memorias", *Scuola Elettrica*, 2021. [En línea](https://scuolaelettrica.it/escuelaelectrica/elettronica/differe7.php#:~:text=Se%20dice%20memoria%20un%20circuito,los%20datos%20uno%20tras%20otro.)

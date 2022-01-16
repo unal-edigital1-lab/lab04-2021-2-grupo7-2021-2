@@ -1,5 +1,5 @@
 vendor_name = ModelSim
-source_file = 1, C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/quartus/Prueba_BReg/simulation/modelsim/Reg8.mem
+source_file = 1, simulation/modelsim/Reg8.mem
 source_file = 1, C:/Datos/UNAL/Materias/2021-2/Electronica_Digital_I/lab04-2021-2-grupo7-2021-2/src/BancoRegistro.v
 source_file = 1, /datos/unal/materias/2021-2/electronica_digital_i/lab04-2021-2-grupo7-2021-2/src/reg8.mem
 source_file = 1, reg8.mem
