@@ -62,7 +62,7 @@ wire [3:0] An;
 			datW = 11;
 			#500000;
 
-		RegWrite = 0; //Habilita la lectura
+		RegWrite = 0;  //Habilita la lectura
 		//Lee las posiciones recién cargadas
 
 			addrA = 1;
