@@ -437,16 +437,99 @@ endmodule
 Este es un módulo muy simple, ya que solo se encarga de unir los submódulos y estos internamente se encargan de todas las operaciones lógcas necesarias para que el sistema funcione.
 
 ##### Simulación:
-`Momento Xiomara equisde`
+Para comprobar su funcionamiento se utilizó el siguiente testbench:
 
 ```verilog
-module Lab4_TB;
-  wire falta_esto;
-endmodule
-```
+`timescale 1ns / 1ps
 
-Esto también falta
-![Resultado de la simulación para Lab4](/img/Sim_Lab4.jpg "Resultado de la simulación para Lab4")
+module Lab4_TB;
+
+	// Inputs
+reg [2:0] addrA;
+reg [2:0] addrB;
+reg [2:0] addrW;
+reg [3:0] datW;
+reg RegWrite;
+reg clk;
+reg rst;
+	// Outputs
+wire [0:6] SSeg;
+wire [3:0] An;
+
+
+//Contador para la lectura (Del tamaño de las direcciones)
+	reg [2:0] i;
+//Contador para la escritura (Tamaño del dato)
+	reg [3:0] j;
+
+
+// Instantiate the Unit Under Test (UUT)
+Lab4 uut (
+	.addrA(addrA),
+	.addrB(addrB),
+	.addrW(addrW),
+	.datW(datW),
+	.RegWrite(RegWrite),
+	.clk(clk),
+	.rst(rst),
+	.SSeg(SSeg),
+	.An(An)
+	);
+
+initial begin
+	// Initialize Inputs 
+	addrA = 0;
+	addrB = 0;
+	addrW = 0;
+	datW = 0;
+	RegWrite = 0;
+	clk = 0;
+	rst = 1;
+	
+	/*Lee dos direcciones para verificar la inicialización previa de la memoria
+	  con el archivo Reg8.mem*/
+		addrA = 1;
+		addrB = 6;
+		#1000000;
+
+	RegWrite = 1; //Habilita la carga de datos
+	#100000;
+	
+	//Carga datos en las mismas posiciones previamente leídas
+	addrW = 6;
+	datW = 5;
+	#500000;
+	addrW = 1;
+	datW = 11;
+	#500000;
+
+	RegWrite = 0; //Habilita la lectura
+
+	//Lee las posiciones recién cargadas
+		addrA = 1;
+		addrB = 6;
+		#1050000;
+
+	rst = 0; //Borra el banco y lee los datos luego de su efecto
+	#50000;
+	rst = 1;
+end
+
+	//Emulación de los pulsos de reloj
+	always #1 clk = ~clk;
+	initial begin: TEST_CASE
+		$dumpfile("TestBench.vcd");
+		#(4300000) $stop; /*tiempo necesario para lograr la visualización dinámica correcta 
+				  debido al divisor de frecuencia de visualización del display*/
+ 	end
+endmodule
+
+```
+El resultado de la simulación fue el siguiente:
+
+![Resultado de la simulación para Lab4](https://user-images.githubusercontent.com/92879278/149717640-086e730a-bb44-4fab-9619-29589638e9f5.png "Resultado de la simulación para Lab4")
+
+Se observa en una primera etapa la lectura de los datos guardos den el registro de memoria, en el momento que el `RegWrite` pasa a 1,  se comienza a cargar datos a las posiciones 1 y 6, como se indicó en el código, los datos cargados serán 5 y 11 respectivamente y en simulación se observa la carga correcta de los datos, enonces, el `RegWrite` pasa a 0 y los datos recien cargados vuelven a ser leídos, es por esto que vemos 2 veces los datos 5 y 11 en la simulación. Por último, el `rst` pasa 0, es decir, todo el banco es borrado o lo que es equivalente a decir que se escribió 0000 en cada posición. Se realiza la lectura de los datos de las posiciones indicadas (1 y 6) y se obtienen salidas de 00 en cada posición.
 
 ### Implementación:
 #### Parte 1 - Visualización:
