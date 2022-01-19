@@ -12,9 +12,9 @@ Banco de registros, Flip-Flop, Lógica secuencial, Memoria, Visualización diná
 Crear un banco de registros en el cual se puedan leer y escribir registros de 4 bits; el ingreso de la información se realizará por medio de interruptores y este debe ser capaz de permitir la lectura de 2 registros simultaneamente. Adicionalmente debe permitir la escritura de registros acorde a la señal de control.
 
 ### Marco Teórico:
-- Banco de registros: Está formado por un numero **n** de registros que pueden ser seleccionados mediante una señal de control para ser escritos o leídos. Por lo general, el banco de registros tiene un puerto de salida de datos y uno de entrada.
+- Banco de registros: Está formado por un numero **n** de registros que pueden ser seleccionados mediante una señal de control para ser escritos o leídos. Por lo general, el banco de registros tiene un puerto de salida de datos y uno de entrada.\[1\]
 
-- Flip-Flop: Son dispositivos biestables **(2 estados)**, que sirven como memoria básica para las operaciones de logica secuencial. Estos son ampliamente usados para el almacenamiento y transferencia de datos digitales. Se usan normalmente en unidades llamadas “registros” , para el almacenamiento de datos numéricos binarios, estos son los tipos de Flip-Flop más utilizados:
+- Flip-Flop: Son dispositivos biestables **(2 estados)**, que sirven como memoria básica para las operaciones de logica secuencial. Estos son ampliamente usados para el almacenamiento y transferencia de datos digitales. Se usan normalmente en unidades llamadas “registros” , para el almacenamiento de datos numéricos binarios, estos son los tipos de Flip-Flop más utilizados: \[2\]
     * Flip-Flop tipo S/R: Es el más básico y a diferencia de los otros, es asíncrono. Este opera de acuerdo a la siguiente tabla de verdad:
 
       |   Acción  | S | R | Q | ~Q |
@@ -36,13 +36,13 @@ Crear un banco de registros en el cual se puedan leer y escribir registros de 4 
 
     ![Flip-Flop tipo D](/img/flip_flop_D.png  "Flip-Flop tipo D")
 
-- Circuito Secuencial Síncrono: Un circuito secuencial síncrono utiliza señales que modifican su estado solo en instantes discretos de tiempo. La sincronización se logra a través de un dispositivo de sincronización llamado generador de señales de reloj que produce una sucesión periódica de pulsos de reloj. Estos se distribuyen en todo el sistema de tal manera que los elementos de almacenamiento sólo sean afectados a la llegada de cada pulso.
+- Circuito Secuencial Síncrono: Un circuito secuencial síncrono utiliza señales que modifican su estado solo en instantes discretos de tiempo. La sincronización se logra a través de un dispositivo de sincronización llamado generador de señales de reloj que produce una sucesión periódica de pulsos de reloj. Estos se distribuyen en todo el sistema de tal manera que los elementos de almacenamiento sólo sean afectados a la llegada de cada pulso.\[3\]
 
-- Circuito de memoria: Se dice memoria un circuito en condiciones de mantener una información y hacerla disponible cuando se necesite. Se distinguen dos tipos de memorias:
+- Circuito de memoria: Se dice memoria un circuito en condiciones de mantener una información y hacerla disponible cuando se necesite. Se distinguen dos tipos de memorias:\[4\]
     * La memoria secuencial: Permite leer o escribir mediante la organización de los datos uno tras otro. Para leer un dato es necesario leer todos los almacenados previamente en el mismo orden de almacenamiento; para escribir un dato es necesario escribir después del último previamente escrito.
     * La memoria aleatoria o random: Es un tipo de memoria en la que los datos se leen o se escriben en la posición deseada. Esto se logra con una codificación previa de todas las direcciones de memoria, por lo que los datos se pueden almacenar a como se desee, sin llevar un orden secuencial; de forma análoga, los datos pueden ser leídos directamente al indicar la dirección donde se almacenan.
 
-- Display 7-Segmentos: Son dispositivos electrónicos de visualización, los cuales se componen de varios segmentos que se encienden y apagan según los niveles de voltaje que reciban en cada uno de sus pines para dar la apariencia del glifo deseado. Los segmentos generalmente son LED individuales o cristales líquidos.
+- Display 7-Segmentos: Son dispositivos electrónicos de visualización, los cuales se componen de varios segmentos que se encienden y apagan según los niveles de voltaje que reciban en cada uno de sus pines para dar la apariencia del glifo deseado. Los segmentos generalmente son LED individuales o cristales líquidos. \[5\]
 
 ![Display 7 Segmentos](http://www.micropic.es/mpblog/wp-content/uploads/2007/07/7seg_pinouts.png "Display 7 Segmentos")
 
@@ -576,6 +576,8 @@ Algo que faltó presentar en el video de funcionamiento del módulo `BancoRegist
 El funcionamiento es practicamente una réplica de la simulación del módulo `BancoRegistro`, es decir, se observa como la inicialización funciona correctamente, luego se hace reset y se verifica con algunas direcciones que todo está en **0**; se cargan datos y se leen correctamente y como valor agregado, se muestra lo explicado previamente que sucedía al dejar `RegWrite = 1`, es decir, cualquier cambio a la entrada se refleja a la salida, mientras que al dejar `RegWrite = 0`, el banco mantiene la información cargada anteriormente y es indiferente a cualquier cambio en `datW`. Finalmente, como no se cargaron datos de forma manual que fuesen **mayores a 9**, se presentan algunos ejemplos de que, en efecto, se pueden cargar números de 4 bits **mayores a 9** y al momento de leer esas posiciones, la información se visualiza en BCD.
 
 ### Bibliografía:
-`Faltan las deferencias de Delwin`
-
-1. "Memorias", *Scuola Elettrica*, 2021. [En línea](https://scuolaelettrica.it/escuelaelectrica/elettronica/differe7.php#:~:text=Se%20dice%20memoria%20un%20circuito,los%20datos%20uno%20tras%20otro.)
+1. "Banco de Registros", *Dpto. Automática. ATC*, 2021. [PDF](http://atc2.aut.uah.es/~avicente/asignaturas/lac/pdf/Practica-3.pdf). 
+2. "Flip Flops", *Ingenieria Mecafenix*, 2021. [En línea](https://www.ingmecafenix.com/electronica/flipflop/).
+3. "LÓGICA SECUENCIAL Y COMBINATORIA", *Instituto Tecnológico de Querétaro*, pp. 2. [En línea](http://www.itq.edu.mx/carreras/IngElectronica/archivos_contenido/Apuntes%20de%20materias/Apuntes_Log_Sec_Comb/Sesion_12_LSC.pdf)
+4. "Memorias", *Scuola Elettrica*, 2021. [En línea](https://scuolaelettrica.it/escuelaelectrica/elettronica/differe7.php#:~:text=Se%20dice%20memoria%20un%20circuito,los%20datos%20uno%20tras%20otro.)
+5. "Display de 7 segmentos", *Newark*, 2021. [En línea](https://mexico.newark.com/display-seven-segment-display-technology)
